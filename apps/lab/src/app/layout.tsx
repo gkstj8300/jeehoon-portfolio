@@ -8,7 +8,7 @@ import '@/styles/globals.scss';
 export const metadata: Metadata = {
 	title: '실험실 | FE 박지훈',
 	description:
-		'현재 실험실 페이지는 개발중입니다.',
+		'프론트엔드 개발에서 시도해본 다양한 실험들을 모아둔 공간이에요.',
 	openGraph: {
 		url: 'https://lab.baakhan.com/',
 		siteName: 'baakhan-lab',
