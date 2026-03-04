@@ -9,6 +9,13 @@
 		color 0.4s ease;
 }
 
+html[data-theme='dark'] {
+	--color-text-primary: #fff;
+	--color-text-secondary: rgb(151 151 151);
+	--color-border-primary: #fff;
+	--color-border-secondary: rgb(255 255 255 / 0.15);
+}
+
 body,
 div,
 span,
