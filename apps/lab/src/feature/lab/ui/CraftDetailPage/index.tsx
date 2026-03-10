@@ -7,11 +7,13 @@ import { ga } from '@/shared/lib/logs/analytics';
 import type { CraftItem } from '../../types/craftItem';
 import WavyText from '../demos/WavyText';
 import DebounceThrottle from '../demos/DebounceThrottle';
+import InteractiveParticles from '../demos/InteractiveParticles';
 import styles from './CraftDetailPage.module.scss';
 
 const demoComponents: Record<string, ComponentType> = {
 	'wavy-text': WavyText,
 	'debounce-throttle': DebounceThrottle,
+	'interactive-particles': InteractiveParticles,
 };
 
 interface CraftDetailPageProps {

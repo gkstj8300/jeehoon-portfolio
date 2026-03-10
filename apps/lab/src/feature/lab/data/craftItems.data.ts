@@ -19,6 +19,15 @@ export const craftItems: CraftItem[] = [
 		createdAt: '2026-02-25',
 		thumbnailValue: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
 	},
+	{
+		slug: 'interactive-particles',
+		title: 'Interactive Particles',
+		description: '캔버스 위의 파티클이 마우스에 반응하며 움직이고, 가까운 파티클끼리 선으로 연결되는 시각화 실험입니다.',
+		category: 'visualization',
+		tags: ['Canvas', 'Physics', 'Animation'],
+		createdAt: '2026-03-06',
+		thumbnailValue: 'linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)',
+	},
 ];
 
 export function getCraftBySlug(slug: string): CraftItem | undefined {
