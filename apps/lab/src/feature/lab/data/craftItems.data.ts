@@ -8,7 +8,7 @@ export const craftItems: CraftItem[] = [
 		category: 'animation',
 		tags: ['CSS', 'Animation', 'Text'],
 		createdAt: '2026-02-25',
-		thumbnailValue: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+		thumbnailValue: 'https://d2ut7x8yqv441q.cloudfront.net/posts/wavyText.webp',
 	},
 	{
 		slug: 'debounce-throttle',
@@ -17,7 +17,7 @@ export const craftItems: CraftItem[] = [
 		category: 'interaction',
 		tags: ['JavaScript', 'Performance', 'Event'],
 		createdAt: '2026-02-25',
-		thumbnailValue: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+		thumbnailValue: 'https://d2ut7x8yqv441q.cloudfront.net/posts/debounce-throttle.webp',
 	},
 	{
 		slug: 'interactive-particles',
@@ -26,7 +26,7 @@ export const craftItems: CraftItem[] = [
 		category: 'visualization',
 		tags: ['Canvas', 'Physics', 'Animation'],
 		createdAt: '2026-03-06',
-		thumbnailValue: 'linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)',
+		thumbnailValue: 'https://d2ut7x8yqv441q.cloudfront.net/posts/interactive_particles.webp',
 	},
 ];
 
