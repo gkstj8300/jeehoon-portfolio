@@ -12,7 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     ...postList.map(post => ({
-      url: `${baseUrl}/posts/${post.slug}`,
+      url: `${baseUrl}/post/detail/${post.slug}`,
       lastModified: new Date(post.regDate),
       priority: 0.8,
     })),

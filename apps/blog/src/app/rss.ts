@@ -16,7 +16,7 @@ const generateRssFeed = (postList: PostType[]) => {
                 .map(post => `
                     <item>
                         <title>${post.title}</title>
-                        <link>${baseUrl}/posts/${post.slug}</link>
+                        <link>${baseUrl}/post/detail/${post.slug}</link>
                         <description>${post.description || ""}</description>
                         <pubDate>${new Date(post.regDate).toUTCString()}</pubDate>
                     </item>

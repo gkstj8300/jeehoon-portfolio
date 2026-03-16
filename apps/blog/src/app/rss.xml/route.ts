@@ -66,7 +66,7 @@ export async function GET() {
   });
 
   items.forEach((p) => {
-    const url = `${BASE_URL}/posts/${p.slug}`;
+    const url = `${BASE_URL}/post/detail/${p.slug}`;
     const thumbAbs = toAbs(p.thumbnailImage);
     const mime = inferMimeFromExt(thumbAbs);
 
