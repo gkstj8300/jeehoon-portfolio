@@ -10,6 +10,6 @@ export const skill = {
   },
   styling: {
     title: '스타일링',
-    skills: ['Sass', 'Styled Components'],
+    skills: ['Sass', 'Styled Components', 'Tailwind'],
   },
 } as const;

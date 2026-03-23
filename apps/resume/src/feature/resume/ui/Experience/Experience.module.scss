@@ -6,7 +6,7 @@
 
 .details {
 	flex: 1;
-	max-width: 150px;
+	max-width: 220px;
 	margin-right: 20px;
 	padding-bottom: 15px;
 	text-align: right;
@@ -72,6 +72,12 @@
 	background-color: var(--sub-background-color);
 	border-radius: 10px;
 	-webkit-print-color-adjust: exact;
+}
+
+.position {
+	margin-top: 5px;
+	font-size: 0.85rem;
+	color: var(--sub-font-color);
 }
 
 @media (max-width: 530px) {
