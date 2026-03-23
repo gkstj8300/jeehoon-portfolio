@@ -2,8 +2,10 @@ import { Ui } from '@jeehoon/ui';
 import styles from './Project.module.scss';
 import ProjectItem from './ProjectItem';
 import hanwhaLogo from './assets/hanwhaLogo.png';
+import jhLogo from '@/feature/resume/ui/Experience/assets/jhsolution_logo.svg';
 import misumiLogo from './assets/misumiLogo.svg';
 import naedamLogo from './assets/naedamLogo.jpg';
+import samsungLogo from '@/feature/resume/ui/Experience/assets/samsungC&T_logo.svg';
 import { project } from './project.data';
 
 interface ProjectItemType {
@@ -20,10 +22,12 @@ type ProjectKey = Exclude<keyof typeof project, 'title'>;
 
 
 const logoByKey: Record<ProjectKey, string> = {
-	hanwha: hanwhaLogo.src,
-	naedam: naedamLogo.src,
-	misumiMaintenance: misumiLogo.src,
+	sems: samsungLogo.src,
+	jhHomepage: jhLogo.src,
 	misumiRenewal: misumiLogo.src,
+	misumiMaintenance: misumiLogo.src,
+	naedam: naedamLogo.src,
+	hanwha: hanwhaLogo.src,
 };
 
 export default function Project() {
@@ -41,7 +45,7 @@ export default function Project() {
 				development: p.development,
 			};
 		})
-		.reverse();
+;
 
 	return (
 		<section>

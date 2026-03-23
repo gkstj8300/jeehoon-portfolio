@@ -9,12 +9,10 @@ export default function Introduce() {
 				</h3>
 				<div className={styles.introduce}>
 					<p>
-						안녕하세요,<br/>프론트엔드 개발자 박지훈 입니다.<br/><br/> 
-						성능 최적화와 SEO 개선을 통해 실제 서비스의 렌더링 속도와 검색 엔진 점수를 향상시킨 경험이 있습니다.<br/> 
-						Lazy Loading, CDN, WebP 포맷 도입, SSR 리다이렉션 등 다양한 기술적 접근을 주도하여 이미지 렌더링 병목 문제를 해결한 경험이 있습니다.<br/><br/>
-						프론트엔드의 최신 트랜드 기술(Next.js, React, Typescript, Redux)을 사용하여 개발하고 있습니다.<br /><br />
-						고민하는 습관을 가진 개발자로, 문제 해결 시 "왜 이렇게 동작하는가?"를 깊이 이해하려고 노력하고 있습니다.<br />
-						사용자의 입장에서 고민하며 최적의 서비스를 제공하기 위해 책임감을 바탕으로 지속적으로 학습하고 있습니다.
+						안녕하세요,<br/>프론트엔드 개발자 박지훈 입니다.<br/><br/>
+						레거시 시스템의 기술 부채를 분석하고, 점진적 마이그레이션을 설계·실행하여 사용자 경험과 개발 생산성을 동시에 개선해온 프론트엔드 개발자입니다.<br/><br/>
+						월 40만 UV 커머스 플랫폼의 React/Next.js 전환을 주도하며 Lighthouse 기반 성능 최적화(LCP 60% 단축)와 UI/UX 개선을 통해 GA4 기준 이탈률 15%p 감소를 달성했습니다.<br/>
+						공통 컴포넌트 설계와 개발 환경 구축을 통해 팀 전체의 개발 리드타임을 30% 단축한 경험이 있습니다.
 					</p>
 				</div>
 			</div>
@@ -24,7 +22,7 @@ export default function Introduce() {
 					마지막 업데이트
 				</small>
 				<span className={styles.updateDate}>
-					2025.09.12
+					2026.03.23
 				</span>
 			</div>
 		</section>
