@@ -1,0 +1,211 @@
+:root {
+	--color-text-primary: #000;
+	--color-text-secondary: #717171;
+	--color-border-primary: #000;
+	--color-border-secondary: #717171;
+
+	/* Portfolio tokens — shared across themes */
+	--pf-accent: #fa2454;
+	--pf-accent-hover: #d61c47;
+	--pf-accent-soft: rgba(250, 36, 84, 0.10);
+	--pf-accent-shadow: rgba(250, 36, 84, 0.18);
+	--pf-radius-sm: 0.5rem;
+	--pf-radius-md: 0.875rem;
+	--pf-radius-lg: 1.25rem;
+	--pf-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	--pf-transition-spring: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+	--pf-max-w: 75rem;
+
+	transition:
+		background-color 0.4s ease,
+		color 0.4s ease;
+}
+
+html[data-theme='dark'] {
+	--pf-bg: #000;
+	--pf-surface: #121212;
+	--pf-surface-2: #1a1a1a;
+	--pf-border: rgba(255, 255, 255, 0.08);
+	--pf-border-strong: rgba(255, 255, 255, 0.16);
+	--pf-text-primary: #f5f5f5;
+	--pf-text-secondary: #b0b0b0;
+	--pf-text-tertiary: #6c6c6c;
+	--pf-card-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.35);
+	--pf-card-shadow-hover: 0 1rem 3rem rgba(250, 36, 84, 0.18), 0 0.25rem 1rem rgba(0, 0, 0, 0.45);
+	--pf-overlay: rgba(0, 0, 0, 0.72);
+}
+
+html[data-theme='light'] {
+	--pf-bg: #ffffff;
+	--pf-surface: #ffffff;
+	--pf-surface-2: #f5f5f7;
+	--pf-border: rgba(0, 0, 0, 0.08);
+	--pf-border-strong: rgba(0, 0, 0, 0.16);
+	--pf-text-primary: #1a1a1a;
+	--pf-text-secondary: #4a4a4a;
+	--pf-text-tertiary: #8a8a8a;
+	--pf-card-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.06);
+	--pf-card-shadow-hover: 0 1rem 3rem rgba(250, 36, 84, 0.14), 0 0.25rem 1rem rgba(0, 0, 0, 0.06);
+	--pf-overlay: rgba(255, 255, 255, 0.72);
+}
+
+body,
+div,
+span,
+p,
+pre,
+code,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+img,
+small,
+strong,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+form,
+label,
+footer,
+header,
+nav,
+section {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+	border: 0;
+	outline: 0;
+}
+
+table,
+tbody,
+tr,
+th,
+td {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	outline: 0;
+}
+
+tr,
+th,
+td {
+	vertical-align: middle;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	color: var(--foreground);
+	background: var(--background);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	letter-spacing: -0.02em;
+	line-height: 1.6;
+	word-break: keep-all;
+	overflow-wrap: break-word;
+	transition:
+		background-color 0.4s ease,
+		color 0.4s ease;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: rgba(125, 125, 125, 0.4);
+	border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: #fa2454;
+}
+
+ul {
+	list-style: none;
+}
+
+button {
+	font-family: inherit;
+	cursor: pointer;
+	border: none;
+	background: none;
+	color: inherit;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+h2 {
+	font-size: 2.25rem;
+}
+
+p {
+	font-weight: 400;
+}
+
+pre, code, input {
+	font-family: var(--font-preten-dard), monospace !important;
+}
+
+/* Lenis base */
+html.lenis,
+html.lenis body {
+	height: auto;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+	overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+	overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+	pointer-events: none;
+}
+
+@media (prefers-color-scheme: dark) {
+	html {
+		color-scheme: dark;
+	}
+}
