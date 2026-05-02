@@ -12,7 +12,7 @@ export default function Footer() {
 					<span>Github</span>
 				</a>
 				<a target="_blank" href={url.portfolio}>
-					<span>Notion-Portfolio</span>
+					<span>Portfolio</span>
 				</a>
 			</div>
 			<div>

@@ -2,22 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 import { profile } from '@/features/portfolio/contents';
+import { calcTotalExperience } from '@/features/portfolio/lib/calcExperience';
 import styles from './Hero.module.scss';
-
-function calcExperience(startYearMonth: string): string {
-	const [y, m] = startYearMonth.split('-').map(Number);
-	if (!y || !m) return '';
-	const start = new Date(y, m - 1, 1);
-	const now = new Date();
-	const months =
-		(now.getFullYear() - start.getFullYear()) * 12 +
-		(now.getMonth() - start.getMonth());
-	const years = Math.floor(months / 12);
-	const restMonths = months % 12;
-	if (years === 0) return `${restMonths}개월`;
-	if (restMonths === 0) return `${years}년`;
-	return `${years}년 ${restMonths}개월`;
-}
 
 export default function Hero() {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -98,7 +84,7 @@ export default function Hero() {
 
 	const stats = profile.stats.map(stat =>
 		stat.key === 'experience'
-			? { ...stat, num: calcExperience(profile.careerStart) }
+			? { ...stat, num: calcTotalExperience(profile.careerHistory) }
 			: stat
 	);
 

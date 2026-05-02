@@ -3,29 +3,15 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { about, profile } from '@/features/portfolio/contents';
+import { calcTotalExperience } from '@/features/portfolio/lib/calcExperience';
 import Reveal from '@/features/portfolio/ui/common/Reveal';
 import styles from './About.module.scss';
-
-function calcExperience(startYearMonth: string): string {
-	const [y, m] = startYearMonth.split('-').map(Number);
-	if (!y || !m) return '';
-	const start = new Date(y, m - 1, 1);
-	const now = new Date();
-	const months =
-		(now.getFullYear() - start.getFullYear()) * 12 +
-		(now.getMonth() - start.getMonth());
-	const years = Math.floor(months / 12);
-	const restMonths = months % 12;
-	if (years === 0) return `${restMonths}개월`;
-	if (restMonths === 0) return `${years}년`;
-	return `${years}년 ${restMonths}개월`;
-}
 
 export default function About() {
 	const [experience, setExperience] = useState('');
 
 	useEffect(() => {
-		setExperience(calcExperience(profile.careerStart));
+		setExperience(calcTotalExperience(profile.careerHistory));
 	}, []);
 
 	return (
