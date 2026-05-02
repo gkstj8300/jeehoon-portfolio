@@ -6,6 +6,10 @@ export const HEADER_MENU = [
     link: url.home,
   },
   {
+    title: "Portfolio",
+    link: url.portfolio,
+  },
+  {
     title: "Resume",
     link: url.resume,
   },

@@ -1,0 +1,146 @@
+.hero {
+	width: 100%;
+	padding: 4rem 0 5rem;
+	background: var(--pf-bg);
+}
+
+.inner {
+	display: grid;
+	grid-template-columns: 1.1fr 1fr;
+	gap: 3.5rem;
+	align-items: center;
+	max-width: var(--pf-max-w);
+	margin: 0 auto;
+	padding: 0 1.5rem;
+}
+
+.text {
+	display: flex;
+	flex-direction: column;
+}
+
+.title {
+	margin-bottom: 1.5rem;
+	color: var(--pf-text-primary);
+	font-size: clamp(1.875rem, 4.4vw, 3rem);
+	font-weight: 800;
+	line-height: 1.2;
+	letter-spacing: -0.025em;
+	white-space: pre-line;
+}
+
+.titlePre {
+	display: inline-block;
+	margin-right: 0.4rem;
+	color: var(--pf-text-tertiary);
+}
+
+.titleAccent {
+	color: var(--pf-accent);
+}
+
+.titlePost {
+	display: block;
+	margin-top: 0.25rem;
+}
+
+.summary {
+	max-width: 32rem;
+	margin-bottom: 2.25rem;
+	color: var(--pf-text-secondary);
+	font-size: clamp(0.95rem, 1.4vw, 1.0625rem);
+	line-height: 1.75;
+
+	strong {
+		color: var(--pf-text-primary);
+		font-weight: 700;
+	}
+}
+
+.metaGrid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1rem;
+	max-width: 32rem;
+}
+
+.metaItem {
+	display: flex;
+	gap: 0.75rem;
+	align-items: flex-start;
+	padding: 0.875rem 1rem;
+	border: 1px solid var(--pf-border);
+	border-radius: var(--pf-radius-md);
+	background: var(--pf-surface);
+}
+
+.metaIcon {
+	display: inline-flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	width: 1.875rem;
+	height: 1.875rem;
+	border-radius: 0.5rem;
+	background: var(--pf-accent-soft);
+	color: var(--pf-accent);
+}
+
+.metaText {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	min-width: 0;
+}
+
+.metaLabel {
+	color: var(--pf-text-tertiary);
+	font-size: 0.7rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.metaValue {
+	color: var(--pf-text-primary);
+	font-size: 0.8125rem;
+	font-weight: 600;
+	line-height: 1.45;
+	white-space: pre-line;
+}
+
+.visual {
+	display: flex;
+	justify-content: center;
+}
+
+.visualWrap {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 4 / 3;
+	border: 1px solid var(--pf-border);
+	border-radius: var(--pf-radius-lg);
+	background: var(--pf-surface);
+	overflow: hidden;
+	box-shadow: var(--pf-card-shadow);
+
+	img {
+		object-fit: cover;
+	}
+}
+
+@media (max-width: 900px) {
+	.inner {
+		grid-template-columns: 1fr;
+		gap: 2.5rem;
+	}
+	.metaGrid {
+		max-width: 100%;
+	}
+}
+
+@media (max-width: 520px) {
+	.metaGrid {
+		grid-template-columns: 1fr;
+	}
+}

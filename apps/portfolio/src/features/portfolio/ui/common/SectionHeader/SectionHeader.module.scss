@@ -1,0 +1,42 @@
+.header {
+	margin-bottom: 2.75rem;
+}
+
+.label {
+	display: inline-block;
+	margin-bottom: 0.625rem;
+	color: var(--pf-accent);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+.title {
+	margin-bottom: 0.875rem;
+	color: var(--pf-text-primary);
+	font-size: clamp(1.75rem, 4vw, 2.5rem);
+	font-weight: 800;
+	line-height: 1.25;
+	white-space: pre-line;
+}
+
+.desc {
+	max-width: 36rem;
+	color: var(--pf-text-secondary);
+	font-size: 1rem;
+	line-height: 1.7;
+	white-space: pre-line;
+}
+
+.align-center {
+	text-align: center;
+
+	.desc {
+		margin: 0 auto;
+	}
+}
+
+.align-left {
+	text-align: left;
+}

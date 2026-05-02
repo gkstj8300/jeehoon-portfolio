@@ -1,0 +1,22 @@
+.container {
+	width: 100%;
+}
+
+.layout {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.backToTop {
+	position: fixed;
+	right: 16px;
+	bottom: 99px;
+	z-index: 50;
+}
+
+@media (max-width: 768px) {
+	.backToTop {
+		right: 12px;
+		bottom: 80px;
+	}
+}
