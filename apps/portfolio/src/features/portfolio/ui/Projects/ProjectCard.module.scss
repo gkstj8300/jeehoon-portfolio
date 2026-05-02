@@ -38,6 +38,16 @@
 	background: var(--pf-surface-2);
 }
 
+.thumbImage {
+	object-fit: cover;
+	object-position: top center;
+	transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .thumbImage {
+	transform: scale(1.04);
+}
+
 .thumbInner {
 	display: flex;
 	align-items: center;

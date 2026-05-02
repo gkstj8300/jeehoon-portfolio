@@ -1,9 +1,10 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import type { Project } from '@/features/portfolio/contents';
 import styles from './ProjectCard.module.scss';
 
 interface ProjectCardProps {
 	project: Project;
-	onClick: () => void;
 }
 
 function formatDuration(start: string, end: string) {
@@ -15,19 +16,28 @@ function formatDuration(start: string, end: string) {
 	return `${fmt(start)} ~ ${fmt(end)}`;
 }
 
-export default function ProjectCard({ project, onClick }: ProjectCardProps) {
+export default function ProjectCard({ project }: ProjectCardProps) {
 	return (
-		<button
-			type="button"
+		<Link
+			href={`/projects/${project.slug}/`}
 			className={styles.card}
-			onClick={onClick}
 			aria-label={`${project.title} 자세히 보기`}
 			data-category={project.category}
 		>
 			<div className={styles.thumb}>
-				<div className={styles.thumbInner} aria-hidden="true">
-					<span className={styles.thumbCompany}>{project.categoryLabel}</span>
-				</div>
+				{project.thumbnail ? (
+					<Image
+						src={project.thumbnail}
+						alt={`${project.title} 썸네일`}
+						fill
+						sizes="(max-width: 768px) 100vw, 50vw"
+						className={styles.thumbImage}
+					/>
+				) : (
+					<div className={styles.thumbInner} aria-hidden="true">
+						<span className={styles.thumbCompany}>{project.categoryLabel}</span>
+					</div>
+				)}
 				<div className={styles.overlay}>
 					<span className={styles.viewBtn}>자세히 보기 →</span>
 				</div>
@@ -50,6 +60,6 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
 					</span>
 				</div>
 			</div>
-		</button>
+		</Link>
 	);
 }

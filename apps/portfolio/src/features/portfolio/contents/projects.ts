@@ -3,8 +3,7 @@ export type ProjectCategory =
 	| 'jh'
 	| 'misumi'
 	| 'naedam'
-	| 'hanwha'
-	| 'side';
+	| 'hanwha';
 
 export interface ProjectLink {
 	label: string;
@@ -33,7 +32,6 @@ export const categoryFilters = [
 	{ id: 'misumi', label: '한국미스미' },
 	{ id: 'naedam', label: '내담씨앤씨' },
 	{ id: 'hanwha', label: '한화생명' },
-	{ id: 'side', label: '사이드' },
 ] as const;
 
 export const projects: readonly Project[] = [
@@ -47,6 +45,7 @@ export const projects: readonly Project[] = [
 			'42개 층 IoT 센서·기상청 API 데이터를 실시간 시각화하는 빌딩 관제 플랫폼',
 		durationStart: '2026-02',
 		durationEnd: '진행중',
+		thumbnail: '/images/projects/sems/overview.png',
 		tags: ['React', 'TypeScript', 'Vite', 'Zustand', 'TanStack Query', 'ECharts', 'WebSocket'],
 		highlights: [
 			'TanStack Query(서버 상태) + Zustand(클라이언트 상태) 분리 설계, WebSocket 기반 실시간 데이터 수신',
@@ -61,11 +60,12 @@ export const projects: readonly Project[] = [
 		category: 'jh',
 		categoryLabel: 'JH Solution',
 		company: 'JH Solution',
-		title: '기업 홈페이지 리뉴얼',
+		title: '제이에이치솔루션 홈페이지 리뉴얼',
 		summary:
 			'Markdown 기반 동적 페이지 + GitHub Actions 이중 배포 파이프라인',
 		durationStart: '2026-01',
 		durationEnd: '진행중',
+		thumbnail: '/images/projects/jh-solution/main.png',
 		tags: ['Gatsby', 'React', 'GraphQL', 'AWS S3', 'CloudFront', 'GitHub Actions', 'Docker'],
 		highlights: [
 			'Markdown frontmatter 기반 동적 페이지 생성 — 콘텐츠 추가 시 코드 변경 없이 페이지 자동 생성',
@@ -84,6 +84,7 @@ export const projects: readonly Project[] = [
 			'10년된 레거시(PHP·RxJS·Twig)를 React·Next.js로 전환한 대규모 마이그레이션',
 		durationStart: '2024-04',
 		durationEnd: '2025-03',
+		thumbnail: '/images/projects/misumi-renewal/dashboard.webp',
 		tags: ['React', 'TypeScript', 'Next.js', 'Redux', 'Sass', 'Styled-components'],
 		highlights: [
 			'운영 중단 없이 페이지 단위 점진적 마이그레이션으로 안정적 전환 완료 (월 약 40만 UV)',
@@ -103,11 +104,12 @@ export const projects: readonly Project[] = [
 		category: 'misumi',
 		categoryLabel: '한국미스미',
 		company: '한국미스미',
-		title: '데이터 기반 UI / UX 개선 및 운영',
+		title: 'UI / UX 개선 및 운영',
 		summary:
 			'GA4 택소노미 + 히트맵 분석 기반 의사결정으로 체류·전환 지표 개선',
 		durationStart: '2023-04',
 		durationEnd: '2024-04',
+		thumbnail: '/images/projects/misumi-maintenance/ui-tobe.webp',
 		tags: ['RxJS', 'Twig', 'JavaScript', 'jQuery', 'PHP', 'GA4'],
 		highlights: [
 			'GA4 이벤트 택소노미 설계 및 dataLayer 기반 주요 이벤트(PV·장바구니·주문·검색) 트래킹 구현',
@@ -118,33 +120,16 @@ export const projects: readonly Project[] = [
 		],
 	},
 	{
-		slug: 'misumi-groobee',
-		category: 'misumi',
-		categoryLabel: '한국미스미',
-		company: '한국미스미',
-		title: '그루비(Groobee) 기반 상품 추천 기능',
-		summary:
-			'페이지 컨텍스트별 추천 배너로 재방문·전환 지표 견인',
-		durationStart: '2024-01',
-		durationEnd: '2024-03',
-		tags: ['JavaScript', 'jQuery', 'API', 'Groobee'],
-		highlights: [
-			'Groobee API 연동으로 상품 조회·구매 데이터 수집 및 전송 파이프라인 구성',
-			'카테고리·상세·검색 각 컨텍스트에 최적화된 추천 배너 노출 형태 설계',
-			'공통 플로팅 바에 슬라이더 기반 추천 상품 노출 — 최근 본 상품과 결합한 UX 강화',
-			'재방문율과 상품 전환율 상승에 직접 기여',
-		],
-	},
-	{
 		slug: 'naedam-homepage',
 		category: 'naedam',
 		categoryLabel: '내담씨앤씨',
 		company: '내담씨앤씨',
-		title: '사내 홈페이지 신규 개발 및 리뉴얼',
+		title: '내담씨앤씨 홈페이지 리뉴얼',
 		summary:
 			'전체 기획·관리자 페이지·다국어까지 단독 리드한 IT 기업 홈페이지',
 		durationStart: '2022-12',
 		durationEnd: '2023-04',
+		thumbnail: '/images/projects/naedam-homepage/main.webp',
 		tags: ['Java', 'Spring Boot', 'JavaScript', 'jQuery', 'MariaDB'],
 		highlights: [
 			'사이트맵·정보 구조 기획 주도 — 부서별 자료 수집과 관리자 데이터 구조 설계까지 단독 진행',
@@ -168,52 +153,13 @@ export const projects: readonly Project[] = [
 			'Kendo UI 기반 수수료 업무 화면 구현 및 ETL 기반 시스템 재구축 협업',
 		durationStart: '2022-05',
 		durationEnd: '2022-12',
+		thumbnail: '/images/projects/hanwha-core/fee-payment.webp',
 		tags: ['Java', 'JavaScript', 'Oracle', 'KendoUI'],
 		highlights: [
 			'수수료 확인·계산·지급 의뢰 등 업무 화면 신규 설계 및 구현',
 			'JobPass(Job Scheduler) + TeraStream(ETL) 기반 시스템 전환 시 프론트 연동 담당',
 			'보험 정책 변경에 따른 수수료 로직 유지보수 및 재정비 주도',
 			'데이터 마이그레이션 검증 협업 — Core 시스템과 레거시 청산 과정',
-		],
-	},
-	{
-		slug: 'baakhan-blog',
-		category: 'side',
-		categoryLabel: '사이드 프로젝트',
-		company: '사이드 프로젝트',
-		title: '박지훈 기술 블로그 (baakhan.com)',
-		summary:
-			'Next.js + Markdown 기반 개인 기술 블로그 — 회고와 학습 기록을 직접 운영',
-		durationStart: '2025-02',
-		durationEnd: '2025-04',
-		tags: ['Next.js', 'React', 'TypeScript', 'Sass', 'gray-matter'],
-		highlights: [
-			'gray-matter + remark/rehype 기반 Markdown 정적 사이트 생성 (SSG) 구조',
-			'태그 시스템·검색·페이지네이션·다크 모드 등 블로그 핵심 기능 직접 구현',
-			'Vercel 배포와 도메인 연결, OG 이미지·SEO 메타 태그 설정으로 검색 노출 확보',
-			'Turborepo + pnpm 모노레포 구조로 다른 앱들과 디자인 시스템 공유',
-		],
-		links: [{ label: 'baakhan.com', href: 'https://www.baakhan.com/' }],
-	},
-	{
-		slug: 'baakhan-portfolio',
-		category: 'side',
-		categoryLabel: '사이드 프로젝트',
-		company: '사이드 프로젝트',
-		title: 'baakhan.com 포트폴리오 모노레포',
-		summary:
-			'Home·Resume·Blog·Lab·Portfolio 5개 앱을 한 도메인에서 통합 운영',
-		durationStart: '2025-01',
-		durationEnd: '진행중',
-		tags: ['Turborepo', 'pnpm', 'Next.js', 'TypeScript', 'Sass', 'Vercel'],
-		highlights: [
-			'@jeehoon/ui · @jeehoon/theme · @jeehoon/hooks · @jeehoon/utils 4개 공유 패키지로 디자인 시스템 일관화',
-			'CSS Custom Properties 기반 다크/라이트 테마 — 쿠키 기반 SSR 초기화로 FOUC 방지',
-			'IntersectionObserver + prefers-reduced-motion 가드로 스크롤 애니메이션 접근성 대응',
-			'ErrorBoundary 계층화로 섹션 단위 장애 격리, GA 이벤트 안전 처리 구조 적용',
-		],
-		links: [
-			{ label: 'GitHub', href: 'https://github.com/gkstj8300/jeehoon-portfolio' },
 		],
 	},
 ];

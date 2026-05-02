@@ -1,18 +1,16 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { categoryFilters, projects, type Project } from '@/features/portfolio/contents';
+import { categoryFilters, projects } from '@/features/portfolio/contents';
 import SectionHeader from '@/features/portfolio/ui/common/SectionHeader';
 import Reveal from '@/features/portfolio/ui/common/Reveal';
 import ProjectCard from './ProjectCard';
-import ProjectModal from './ProjectModal';
 import styles from './Projects.module.scss';
 
 type FilterId = (typeof categoryFilters)[number]['id'];
 
 export default function Projects() {
 	const [filter, setFilter] = useState<FilterId>('all');
-	const [activeProject, setActiveProject] = useState<Project | null>(null);
 
 	const filtered = useMemo(() => {
 		if (filter === 'all') return projects;
@@ -46,10 +44,7 @@ export default function Projects() {
 				<div className={styles.grid}>
 					{filtered.map((project, idx) => (
 						<Reveal key={project.slug} delay={idx * 60}>
-							<ProjectCard
-								project={project}
-								onClick={() => setActiveProject(project)}
-							/>
+							<ProjectCard project={project} />
 						</Reveal>
 					))}
 					{filtered.length === 0 ? (
@@ -57,11 +52,6 @@ export default function Projects() {
 					) : null}
 				</div>
 			</div>
-
-			<ProjectModal
-				project={activeProject}
-				onClose={() => setActiveProject(null)}
-			/>
 		</section>
 	);
 }
