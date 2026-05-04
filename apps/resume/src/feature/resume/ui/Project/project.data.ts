@@ -17,7 +17,7 @@ export const project = {
 		name: 'JH Solution',
 		projectName: '기업 홈페이지 리뉴얼',
 		durationStart: '2026-01',
-		durationEnd: '진행중',
+		durationEnd: '2026-02',
 		skillKeywords: 'Gatsby,React,CSS Modules,GraphQL,AWS S3,CloudFront,GitHub Actions,Docker',
 		development: `Markdown frontmatter 기반 동적 페이지 생성 — 콘텐츠 추가 시 코드 변경 없이 페이지 자동 생성<br />
 									GitHub Actions 기반 dev/prod 이중 배포 파이프라인 및 CloudFront 캐시 무효화 자동화<br />
