@@ -1,0 +1,136 @@
+.section {
+	width: 100%;
+	padding: 5rem 0;
+}
+
+.inner {
+	max-width: var(--hm-max-w);
+	margin: 0 auto;
+	padding: 0 1.5rem;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+	gap: 1.25rem;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	gap: 0.875rem;
+	padding: 1.5rem;
+	border: 1px solid var(--hm-border);
+	border-radius: var(--hm-radius-lg);
+	background: var(--hm-surface);
+	box-shadow: var(--hm-card-shadow);
+	transition: var(--hm-transition);
+
+	&:hover {
+		border-color: var(--hm-accent);
+		transform: translateY(-2px);
+		box-shadow: var(--hm-card-shadow-hover);
+
+		.arrow {
+			color: var(--hm-accent);
+		}
+	}
+}
+
+.cardHead {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: space-between;
+	color: var(--hm-text-tertiary);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+}
+
+.company {
+	color: var(--hm-accent);
+	text-transform: uppercase;
+}
+
+.period {
+	color: var(--hm-text-tertiary);
+}
+
+.title {
+	color: var(--hm-text-primary);
+	font-size: 1.0625rem;
+	font-weight: 700;
+	line-height: 1.45;
+	letter-spacing: -0.015em;
+}
+
+.summary {
+	color: var(--hm-text-secondary);
+	font-size: 0.9375rem;
+	line-height: 1.6;
+}
+
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.375rem;
+	margin-top: auto;
+	padding: 0;
+	list-style: none;
+}
+
+.tag {
+	padding: 0.25rem 0.625rem;
+	border: 1px solid var(--hm-border);
+	border-radius: 999px;
+	color: var(--hm-text-tertiary);
+	font-size: 0.75rem;
+	font-weight: 600;
+}
+
+.arrow {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.375rem;
+	margin-top: 0.5rem;
+	color: var(--hm-text-secondary);
+	font-size: 0.8125rem;
+	font-weight: 600;
+	transition: var(--hm-transition);
+}
+
+.more {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 2rem;
+}
+
+.moreLink {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.625rem 1rem;
+	border: 1px solid var(--hm-border-strong);
+	border-radius: 999px;
+	color: var(--hm-text-primary);
+	font-size: 0.875rem;
+	font-weight: 600;
+	transition: var(--hm-transition);
+
+	&:hover {
+		border-color: var(--hm-accent);
+		color: var(--hm-accent);
+	}
+}
+
+@media (max-width: 768px) {
+	.section {
+		padding: 4rem 0;
+	}
+
+	.more {
+		justify-content: center;
+	}
+}

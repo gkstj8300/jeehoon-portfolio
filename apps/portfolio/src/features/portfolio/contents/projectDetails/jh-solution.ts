@@ -13,7 +13,7 @@ export const jhSolution: ProjectDetail = {
 		thumbnail: { src: `${IMG}/main.png`, alt: 'JH Solution 메인 페이지' },
 		meta: [
 			{ icon: 'company', label: 'Company', value: 'JH Solution' },
-			{ icon: 'timeline', label: 'Timeline', value: '2026.01 ~ 진행중' },
+			{ icon: 'timeline', label: 'Timeline', value: '2026.01 ~ 2026.02' },
 			{ icon: 'role', label: 'Role', value: 'Frontend / Infra\n설계 · 구현 · 배포 자동화 단독' },
 			{ icon: 'stack', label: 'Tech Stack', value: 'Gatsby · React · GraphQL\nAWS S3 · CloudFront · GitHub Actions' },
 		],

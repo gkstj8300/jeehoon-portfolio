@@ -129,10 +129,45 @@
 	position: relative;
 	width: 100%;
 	aspect-ratio: 16 / 10;
+	padding: 0;
 	border: 1px solid var(--pf-border);
 	border-radius: var(--pf-radius-md);
 	background: var(--pf-surface);
 	overflow: hidden;
+	cursor: zoom-in;
+	transition: var(--pf-transition);
+
+	&:hover {
+		border-color: var(--pf-accent);
+
+		.gridExpandHint {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+}
+
+.gridExpandHint {
+	position: absolute;
+	bottom: 0.75rem;
+	right: 0.75rem;
+	z-index: 2;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.375rem;
+	padding: 0.4rem 0.75rem;
+	border-radius: 999px;
+	background: rgba(0, 0, 0, 0.6);
+	color: #fff;
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	opacity: 0;
+	transform: translateY(0.25rem);
+	transition: var(--pf-transition);
+	pointer-events: none;
 }
 
 .gridLabel {
@@ -142,8 +177,165 @@
 	padding-left: 0.25rem;
 }
 
+.expandBtn {
+	position: absolute;
+	top: 0.875rem;
+	right: 0.875rem;
+	z-index: 2;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.25rem;
+	height: 2.25rem;
+	border: 1px solid var(--pf-border-strong);
+	border-radius: 999px;
+	background: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	cursor: zoom-in;
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	transition: var(--pf-transition);
+
+	&:hover {
+		background: var(--pf-accent);
+		border-color: var(--pf-accent);
+	}
+}
+
+.lightbox {
+	position: fixed;
+	inset: 0;
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 2rem;
+	animation: fade 0.2s ease;
+}
+
+.lightboxBackdrop {
+	position: absolute;
+	inset: 0;
+	border: 0;
+	padding: 0;
+	background: var(--pf-overlay);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	cursor: zoom-out;
+}
+
+.lightboxContent {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	width: min(100%, 80rem);
+	max-height: 100%;
+}
+
+.lightboxImageWrap {
+	position: relative;
+	flex: 1 1 auto;
+	min-height: 0;
+	width: 100%;
+	height: calc(100vh - 9rem);
+	max-height: calc(100vh - 9rem);
+	border: 1px solid var(--pf-border);
+	border-radius: var(--pf-radius-lg);
+	background: var(--pf-surface);
+	overflow: hidden;
+	box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.5);
+}
+
+.lightboxImage {
+	object-fit: contain;
+	animation: fade 0.35s ease;
+}
+
+.lightboxTabs {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.375rem;
+	padding: 0.375rem;
+	border: 1px solid var(--pf-border);
+	border-radius: var(--pf-radius-md);
+	background: var(--pf-surface);
+	align-self: center;
+	max-width: 100%;
+}
+
+.lightboxTabBtn {
+	padding: 0.5rem 0.875rem;
+	border-radius: 0.5rem;
+	background: transparent;
+	color: var(--pf-text-secondary);
+	font-size: 0.8125rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: var(--pf-transition);
+
+	&:hover {
+		color: var(--pf-accent);
+	}
+}
+
+.lightboxTabActive {
+	background: var(--pf-accent);
+	color: #fff;
+
+	&:hover {
+		color: #fff;
+	}
+}
+
+.lightboxClose {
+	position: absolute;
+	top: 1.25rem;
+	right: 1.25rem;
+	z-index: 2;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	border: 1px solid var(--pf-border-strong);
+	border-radius: 999px;
+	background: rgba(0, 0, 0, 0.6);
+	color: #fff;
+	cursor: pointer;
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	transition: var(--pf-transition);
+
+	&:hover {
+		background: var(--pf-accent);
+		border-color: var(--pf-accent);
+	}
+}
+
 @media (max-width: 768px) {
 	.tabsHint {
 		display: none;
+	}
+
+	.lightbox {
+		padding: 1rem;
+	}
+
+	.lightboxImageWrap {
+		height: calc(100vh - 11rem);
+		max-height: calc(100vh - 11rem);
+	}
+
+	.lightboxClose {
+		top: 0.75rem;
+		right: 0.75rem;
+	}
+
+	.gridExpandHint {
+		opacity: 1;
+		transform: translateY(0);
 	}
 }

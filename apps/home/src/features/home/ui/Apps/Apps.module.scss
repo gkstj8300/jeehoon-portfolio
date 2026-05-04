@@ -1,0 +1,76 @@
+.section {
+	width: 100%;
+	padding: 5rem 0;
+}
+
+.inner {
+	max-width: var(--hm-max-w);
+	margin: 0 auto;
+	padding: 0 1.5rem;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+	gap: 1rem;
+}
+
+.card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 0.625rem;
+	padding: 1.5rem;
+	border: 1px solid var(--hm-border);
+	border-radius: var(--hm-radius-lg);
+	background: var(--hm-surface);
+	box-shadow: var(--hm-card-shadow);
+	transition: var(--hm-transition);
+	min-height: 10rem;
+
+	&:hover {
+		border-color: var(--hm-accent);
+		transform: translateY(-2px);
+		box-shadow: var(--hm-card-shadow-hover);
+
+		.cardArrow {
+			color: var(--hm-accent);
+			transform: translate(2px, -2px);
+		}
+	}
+}
+
+.cardLabel {
+	color: var(--hm-text-primary);
+	font-size: 1.125rem;
+	font-weight: 800;
+	letter-spacing: -0.015em;
+}
+
+.cardDesc {
+	color: var(--hm-text-secondary);
+	font-size: 0.9375rem;
+	line-height: 1.6;
+}
+
+.cardHost {
+	margin-top: auto;
+	color: var(--hm-text-tertiary);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+}
+
+.cardArrow {
+	position: absolute;
+	top: 1.25rem;
+	right: 1.25rem;
+	color: var(--hm-text-tertiary);
+	transition: var(--hm-transition);
+}
+
+@media (max-width: 768px) {
+	.section {
+		padding: 4rem 0;
+	}
+}

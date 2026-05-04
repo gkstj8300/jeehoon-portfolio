@@ -64,7 +64,7 @@ export const projects: readonly Project[] = [
 		summary:
 			'Markdown 기반 동적 페이지 + GitHub Actions 이중 배포 파이프라인',
 		durationStart: '2026-01',
-		durationEnd: '진행중',
+		durationEnd: '2026-02',
 		thumbnail: '/images/projects/jh-solution/main.png',
 		tags: ['Gatsby', 'React', 'GraphQL', 'AWS S3', 'CloudFront', 'GitHub Actions', 'Docker'],
 		highlights: [

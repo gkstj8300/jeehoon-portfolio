@@ -50,14 +50,13 @@ export const sems: ProjectDetail = {
 	showcase: {
 		label: '주요 화면',
 		title: '운영자가 한 화면에서 즉시 판단할 수 있도록',
-		lead: '복잡한 센서 수치 대신, 흐름·이상·조치를 동일한 화면에서 이어갈 수 있도록 6개 영역의 대시보드를 설계했습니다.',
+		lead: '복잡한 센서 수치 대신, 흐름·이상·조치를 동일한 화면에서 이어갈 수 있도록 4개 영역의 대시보드를 설계했습니다.',
 		layout: 'tabs',
 		items: [
 			{ id: 'overview', label: '종합 현황', image: { src: `${IMG}/overview.png`, alt: '종합 현황 대시보드' } },
 			{ id: 'stack-effect', label: '연돌 계산', image: { src: `${IMG}/stack-effect.png`, alt: '연돌 효과 계산 화면' } },
 			{ id: 'sensors', label: '센서 관리', image: { src: `${IMG}/sensors.png`, alt: '센서 관리 화면' } },
 			{ id: 'alert-config', label: '알림 설정', image: { src: `${IMG}/alert-config.png`, alt: '알림 정책 설정 화면' } },
-			{ id: 'alert-google-chat', label: 'Google Chat 연동', image: { src: `${IMG}/alert-google-chat.png`, alt: 'Google Chat 알림 연동' } },
 		],
 	},
 };
