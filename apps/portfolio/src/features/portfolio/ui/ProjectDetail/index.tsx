@@ -1,5 +1,4 @@
 import type { Project, ProjectDetail as ProjectDetailData } from '@/features/portfolio/contents';
-import ProjectBar from './ProjectBar';
 import DetailHero from './DetailHero';
 import Strategy from './Strategy';
 import Showcase from './Showcase';
@@ -17,8 +16,6 @@ interface ProjectDetailProps {
 export default function ProjectDetail({ card, detail, nextCard }: ProjectDetailProps) {
 	return (
 		<main className={styles.main}>
-			<ProjectBar title={card.title} tags={card.tags} />
-
 			<DetailHero hero={detail.hero} />
 
 			{detail.strategy ? (
