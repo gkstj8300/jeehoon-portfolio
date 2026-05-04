@@ -12,3 +12,7 @@ npm-debug.log*
 /src/utils/$path.ts
 .vercel
 .turbo
+
+.claude/*
+docs/*
+.mcp.json
