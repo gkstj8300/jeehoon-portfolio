@@ -58,7 +58,6 @@ export const misumiRenewal: ProjectDetail = {
 			{ id: 'compare', label: '상품 비교', image: { src: `${IMG}/compare.webp`, alt: '비교 결과 페이지' } },
 			{ id: 'search', label: '검색', image: { src: `${IMG}/search.webp`, alt: '검색 인터페이스' } },
 			{ id: 'mega-nav', label: '메가나비', image: { src: `${IMG}/mega-nav.webp`, alt: '카테고리 메가 내비게이션' } },
-			{ id: 'floating', label: '플로팅 바', image: { src: `${IMG}/floating.webp`, alt: '플로팅 바 + 비교 팝업' } },
 		],
 	},
 	comparison: {
