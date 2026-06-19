@@ -85,7 +85,8 @@ export default function Experience() {
 				durationEnd="재직중"
 				position="정규직 | 프론트엔드 서비스 개발 | 대리"
 				experienceItems={[
-					'삼성물산 건물 관제 시스템(SEMS) 프론트엔드 설계 및 개발 (FE 1명 / 전체 6명)',
+					'삼성물산 BEES 스마트빌딩 통합 에너지·환경 관제 플랫폼(BEMS/BAS) 프론트엔드 설계 및 BFF 연동 (FE 1명 / 전체 6명)',
+					'삼성물산 연돌 상태 모니터링 시스템(SEMS) 프론트엔드 설계 및 개발 (FE 1명 / 전체 5명)',
 					'JH Solution 기업 홈페이지 리뉴얼 (FE 1명 / 전체 3명)',
 				]}
 			/>

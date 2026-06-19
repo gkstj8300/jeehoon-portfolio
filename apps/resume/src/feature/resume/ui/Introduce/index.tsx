@@ -10,9 +10,10 @@ export default function Introduce() {
 				<div className={styles.introduce}>
 					<p>
 						안녕하세요,<br/>프론트엔드 개발자 박지훈 입니다.<br/><br/>
-						레거시 시스템의 기술 부채를 분석하고, 점진적 마이그레이션을 설계·실행하여 사용자 경험과 개발 생산성을 동시에 개선해온 프론트엔드 개발자입니다.<br/><br/>
-						월 40만 UV 커머스 플랫폼의 React/Next.js 전환을 주도하며 Lighthouse 기반 성능 최적화(LCP 60% 단축)와 UI/UX 개선을 통해 GA4 기준 이탈률 15%p 감소를 달성했습니다.<br/>
-						공통 컴포넌트 설계와 개발 환경 구축을 통해 팀 전체의 개발 리드타임을 30% 단축한 경험이 있습니다.
+						비즈니스 문제를 아키텍처로 해결하고, 데이터로 성과를 증명하는 4년 차 프론트엔드 개발자입니다.<br/><br/>
+						10년 된 대형 커머스를 무중단 Next.js로 마이그레이션하여 LCP 60% 단축과 GA4 기준 이탈률 15%p 감소를 달성했습니다.<br/>
+						대형 관제 플랫폼에서는 웹소켓-REST 하이브리드 동기화 구조와 Django 기반 BFF를 직접 설계·구현하여 클라이언트 복잡도를 최적화했습니다.<br/>
+						Claude Code CLI를 페어 프로그래머로, Figma MCP를 UI 프로토타이핑에 활용하면서도, 크롬 힙 스냅샷 분석으로 AI 생성 코드의 가비지 컬렉션 누수를 직접 추적·제어하여 런타임 안정성을 확보하였습니다.
 					</p>
 				</div>
 			</div>
@@ -22,7 +23,7 @@ export default function Introduce() {
 					마지막 업데이트
 				</small>
 				<span className={styles.updateDate}>
-					2026.03.23
+					2026.06.19
 				</span>
 			</div>
 		</section>

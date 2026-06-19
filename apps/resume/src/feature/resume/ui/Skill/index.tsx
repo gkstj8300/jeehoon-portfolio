@@ -3,7 +3,7 @@ import styles from './Skill.module.scss';
 import SkillItem from './SkillItem';
 import { skill } from './skill.data';
 
-const skillKeys = ['coreStack', 'stateManagement', 'styling'] as const;
+const skillKeys = ['coreStack', 'stateManagement', 'styling', 'tools'] as const;
 
 export interface SkillProps {
 	title: string;

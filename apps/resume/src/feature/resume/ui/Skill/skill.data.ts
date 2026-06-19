@@ -12,4 +12,8 @@ export const skill = {
     title: '스타일링',
     skills: ['Sass', 'Styled Components', 'Tailwind'],
   },
+  tools: {
+    title: 'AI 도구',
+    skills: ['Claude', 'Cursor'],
+  },
 } as const;
