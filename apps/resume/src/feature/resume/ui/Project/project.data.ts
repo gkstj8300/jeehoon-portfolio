@@ -3,7 +3,7 @@ export const project = {
 	bees: {
 		name: '삼성물산',
 		projectName: 'BEES 스마트빌딩 통합 에너지·환경 관제 플랫폼 (BEMS/BAS)',
-		durationStart: '2026-04',
+		durationStart: '2026-03',
 		durationEnd: '진행중',
 		skillKeywords: 'React,Next.js,TypeScript,Vite,TailwindCSS,Zustand,TanStack Query,Three.js,ECharts,i18next,Django,WebSocket',
 		development: `대시보드 아키텍처 설계: 27개 화면의 조건부 렌더링 복잡도를 제거하고자 페르소나별(관리자/건물주/입주자) 데이터 접근 범위를 격리한 라우팅 시스템 구축 및 유지보수 생산성 극대화<br />
@@ -54,7 +54,7 @@ export const project = {
 		name: '내담씨앤씨',
 		projectName: '사내 홈페이지 리뉴얼',
 		durationStart: '2022-12',
-		durationEnd: '2023-04',
+		durationEnd: '2023-03',
 		skillKeywords: 'Java,Spring Boot,JavaScript,jQuery,MariaDB',
 		development: `Java + Spring Boot 기반 사내 홈페이지 전면 리뉴얼. UI/UX 플로우 기획, 반응형 UI 구현, 쿠기 기반 다국어 기능(국/영), 관리자 시스템 개발`,
 	},
