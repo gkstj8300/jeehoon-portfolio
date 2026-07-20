@@ -11,10 +11,10 @@ export const misumiMaintenance: ProjectDetail = {
 		summaryHtml:
 			'<strong>GA4 이벤트 택소노미</strong>와 <strong>히트맵 분석</strong>을 결합해, 감으로 진행되던 UI 개선을 데이터 기반 의사결정 체계로 바꾼 운영기입니다.',
 		meta: [
-			{ icon: 'company', label: 'Company', value: '한국미스미 (파견)' },
+			{ icon: 'company', label: 'Company', value: '한국미스미' },
 			{ icon: 'timeline', label: 'Timeline', value: '2023.04 ~ 2024.04 (13개월)' },
-			{ icon: 'role', label: 'Role', value: 'Frontend Engineer\nGA 설계 · UI 개선 · A/B 검증' },
-			{ icon: 'stack', label: 'Tech Stack', value: 'GA4 · BigQuery\nRxJS · Twig · jQuery · PHP' },
+			{ icon: 'role', label: 'Role', value: 'Frontend Engineer\nGA 설계 · UI 개선 · 데이터 검증' },
+			{ icon: 'stack', label: 'Tech Stack', value: 'GA4 · GTM · dataLayer\nRxJS · Twig · jQuery · PHP' },
 		],
 	},
 	strategy: {
@@ -31,18 +31,20 @@ export const misumiMaintenance: ProjectDetail = {
 			{
 				icon: 'flow',
 				title: '비개발자 자율 분석 환경',
-				text: 'GA4 Explore와 BigQuery 쿼리 템플릿을 제공해, 마케팅·기획팀이 직접 데이터를 조회하는 의사결정 체계를 구축했습니다.',
-				why: '병목이 되는 분석 요청 큐를 줄이고, 가설 검증 사이클을 짧게 만들었습니다.',
+				text: 'GA4 Explore 조회 환경과 표준 리포트를 제공해, 마케팅·기획팀이 직접 데이터를 조회하는 의사결정 체계를 구축했습니다.',
+				why: '개발자가 매번 데이터를 뽑아주면 그 자체가 병목이 됩니다. 조회를 팀에 넘겨 분석 요청 큐를 줄이고, 가설 검증 사이클을 짧게 만들었습니다.',
 			},
 			{
 				icon: 'target',
 				title: 'Heatmap·Scroll Depth 기반 개선',
 				text: 'CTA 가시성 부족·콘텐츠 이탈 구간을 발견하고 UI 리뉴얼을 진행해 체류시간 18%↑, 이탈률 11%↓를 달성했습니다.',
+				why: 'CTA를 어디로 옮길지 감으로 정하지 않았습니다. 히트맵과 스크롤 뎁스에서 사용자가 실제로 멈추는 지점을 찾아, 그 구간의 정보 위계만 손봤습니다.',
 			},
 			{
 				icon: 'sparkles',
 				title: '개인화 추천 배너 도입',
 				text: '외부 추천 솔루션 API를 페이지별 컨텍스트에 맞춰 연동해, 재방문율 15%↑, 구매 전환율 8%↑를 확인했습니다.',
+				why: '전면 개편 대신 페이지 맥락에 맞는 추천만 얹어 위험을 낮췄습니다. 도입 전/후 지표를 비교해 효과를 확인한 뒤 노출 범위를 넓혔습니다.',
 			},
 		],
 	},

@@ -36,6 +36,26 @@ export const categoryFilters = [
 
 export const projects: readonly Project[] = [
 	{
+		slug: 'bees',
+		category: 'samsung',
+		categoryLabel: '삼성물산',
+		company: '삼성물산',
+		title: 'BEES 스마트빌딩 통합 관제 플랫폼',
+		summary:
+			'에너지(BEMS)·설비(BAS)를 3D로 관제하는 통합 플랫폼 — 3개 페르소나 27개 화면과 프론트 주도 BFF 설계',
+		durationStart: '2026-04',
+		durationEnd: '진행중',
+		thumbnail: '/images/projects/bees/BEES-1.png',
+		tags: ['React', 'Next.js', 'TypeScript', 'Zustand', 'TanStack Query', 'Three.js', 'WebSocket', 'Django(BFF)'],
+		highlights: [
+			'관리자·건물주·입주자 3개 페르소나의 27개 화면을 라우팅 단 권한 분리로 단일 코드베이스에서 운영',
+			'화면당 6~7건 REST 호출을 프론트 주도 BFF(Django/DRF)로 1건 통합 — PostgreSQL·TimescaleDB를 단일 스냅샷으로 집계',
+			'WebSocket 우선 + TanStack Query 폴링(60s) 자동 폴백을 커스텀 훅으로 캡슐화, 재연결 레이스 컨디션 방어',
+			'Claude Code 생성 Three.js 코드의 WebGL 메모리 누수를 힙 스냅샷으로 식별 후 dispose 로직 직접 구현',
+			'훅 시그니처를 유지한 채 시계열 저장소 교체(InfluxDB→TimescaleDB)를 흡수 — UI 무손상',
+		],
+	},
+	{
 		slug: 'sems',
 		category: 'samsung',
 		categoryLabel: '삼성물산',
@@ -44,7 +64,7 @@ export const projects: readonly Project[] = [
 		summary:
 			'42개 층 IoT 센서·기상청 API 데이터를 실시간 시각화하는 빌딩 관제 플랫폼',
 		durationStart: '2026-02',
-		durationEnd: '진행중',
+		durationEnd: '2026-03',
 		thumbnail: '/images/projects/sems/overview.png',
 		tags: ['React', 'TypeScript', 'Vite', 'Zustand', 'TanStack Query', 'ECharts', 'WebSocket'],
 		highlights: [

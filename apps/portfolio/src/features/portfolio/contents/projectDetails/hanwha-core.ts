@@ -9,7 +9,7 @@ export const hanwhaCore: ProjectDetail = {
 		titleAccent: '코어 시스템',
 		titlePost: '구축 프로젝트',
 		summaryHtml:
-			'<strong>Kendo UI 기반 수수료 업무 화면</strong>과 <strong>ETL 기반 시스템 재구축</strong>에 참여한 차세대 코어 시스템 프로젝트.',
+			'<strong>Kendo UI 기반 수수료 업무 화면</strong>을 신규 설계·구현하고, 수작업 배치를 <strong>JobPass + TeraStream ETL</strong> 기반으로 재구축하며 화면과 데이터 흐름을 함께 맞췄습니다. 보험 정책이 바뀔 때마다 수수료 계산 로직을 <strong>유지보수</strong>했습니다.',
 		meta: [
 			{ icon: 'company', label: 'Company', value: '한화생명' },
 			{ icon: 'timeline', label: 'Timeline', value: '2022.05 ~ 2022.12 (8개월)' },
@@ -32,16 +32,19 @@ export const hanwhaCore: ProjectDetail = {
 				icon: 'cube',
 				title: 'JobPass + TeraStream 도입',
 				text: 'DD(DB to DB), FD(File to DB) 방식의 다양한 데이터 유형을 ETL로 적재하도록 인터페이스를 재설계했습니다.',
+				why: '적재 방식이 유형마다 갈렸기 때문에, 화면·로직에서 분기를 늘리기보다 ETL 단에서 차이를 흡수하도록 설계해 상위 계층을 단순하게 유지했습니다.',
 			},
 			{
 				icon: 'speed',
 				title: 'MERGE 기반 적재 효율화',
 				text: 'MERGE 문으로 적재 효율을 높이고, 지급 유형별 프로시저를 모듈화해 유연한 수수료 계산 로직을 만들었습니다.',
+				why: '지급 유형마다 계산 규칙이 달라 분기가 늘어나기 쉬웠습니다. 유형별 프로시저로 나누고 적재를 MERGE로 합쳐, 정책이 바뀌어도 해당 프로시저만 손보면 되도록 했습니다.',
 			},
 			{
 				icon: 'shield',
 				title: '데이터 마이그레이션 검증',
 				text: 'Core 시스템과 레거시 청산 과정에서 협업 부서와 데이터 정합성 검증을 함께 수행했습니다.',
+				why: '금액이 틀리면 되돌리기 어려운 도메인이라, 청산 전 신·구 데이터를 대사하며 정합성을 먼저 확인했습니다. 검증 없는 이관은 하지 않는다는 원칙을 지켰습니다.',
 			},
 		],
 	},

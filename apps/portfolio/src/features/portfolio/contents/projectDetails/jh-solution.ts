@@ -39,11 +39,13 @@ export const jhSolution: ProjectDetail = {
 				icon: 'sparkles',
 				title: 'AI 기반 디자인-코드 연결',
 				text: 'Claude Code + Figma MCP 연동으로 디자인 시안을 코드 초안으로 직접 변환해, 컴포넌트 마크업·스타일 작업 시간을 단축했습니다.',
+				why: 'AI가 만든 마크업을 그대로 쓰지 않고, 디자인 토큰과 컴포넌트 규칙에 맞는지 확인한 뒤 반영했습니다. 초안 생성은 도구에 맡기되 구조 판단은 직접 했습니다.',
 			},
 			{
 				icon: 'shield',
 				title: '서버리스 Contact API',
 				text: 'Google Forms 연동으로 별도 백엔드 없이 문의 플로우를 완결, 운영 부담을 0에 가깝게 유지했습니다.',
+				why: '문의 하나 받자고 서버를 두면 그때부터 유지보수 대상이 됩니다. Google Forms로 접수 계약을 옮겨, 관리할 백엔드 없이 문의 플로우만 완결했습니다.',
 			},
 		],
 	},

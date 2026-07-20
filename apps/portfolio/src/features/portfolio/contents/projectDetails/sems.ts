@@ -12,7 +12,7 @@ export const sems: ProjectDetail = {
 			'<strong>42개 층 IoT 센서</strong>와 <strong>기상청 API</strong>를 결합해, 건물 압력 변화를 실시간으로 시각화하는 <strong>관제 플랫폼</strong>입니다.',
 		meta: [
 			{ icon: 'company', label: 'Company', value: '삼성물산' },
-			{ icon: 'timeline', label: 'Timeline', value: '2026.02 ~ 진행중' },
+			{ icon: 'timeline', label: 'Timeline', value: '2026.02 ~ 2026.03' },
 			{ icon: 'role', label: 'Role', value: 'Frontend Lead\n실시간 데이터·시각화 설계' },
 			{ icon: 'stack', label: 'Tech Stack', value: 'React · TypeScript · Vite\nZustand · TanStack Query · ECharts' },
 		],
@@ -44,6 +44,7 @@ export const sems: ProjectDetail = {
 				icon: 'cube',
 				title: 'Mock / Server 모드 분리',
 				text: 'MSW 기반으로 Mock과 Server 모드를 토글해 백엔드 의존 없이도 UI 개발과 시연이 가능하도록 환경을 분리했습니다.',
+				why: 'API 명세만 나온 단계에서도 화면을 먼저 완성하려면, 백엔드 없이 같은 데이터 계약으로 개발·시연이 돼야 했습니다. 두 모드를 토글로 나눠 백엔드 일정에 UI가 묶이지 않게 했습니다.',
 			},
 		],
 	},

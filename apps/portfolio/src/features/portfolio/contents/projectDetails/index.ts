@@ -1,4 +1,5 @@
 import type { ProjectDetail } from './types';
+import { bees } from './bees';
 import { sems } from './sems';
 import { jhSolution } from './jh-solution';
 import { misumiRenewal } from './misumi-renewal';
@@ -7,6 +8,7 @@ import { naedamHomepage } from './naedam-homepage';
 import { hanwhaCore } from './hanwha-core';
 
 const all: ProjectDetail[] = [
+	bees,
 	sems,
 	jhSolution,
 	misumiRenewal,
