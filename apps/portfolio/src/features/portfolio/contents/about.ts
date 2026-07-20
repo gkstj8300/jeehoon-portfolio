@@ -17,9 +17,9 @@ export const about = {
 			label: '02 / Background',
 			title: 'Background',
 			paragraphs: [
-				'에이전시(내담씨앤씨)에서 사내 홈페이지 신규 개발을 리드하며 기획·UI·관리자 페이지까지 전반을 담당했습니다.',
-				'한국미스미 파견을 통해 10년된 레거시(PHP·RxJS·Twig)를 React·TypeScript·Next.js로 전환하는 대규모 마이그레이션과 운영을 함께 수행했습니다.',
+				'10년된 레거시(PHP·RxJS·Twig)를 React·TypeScript·Next.js로 전환하는 대규모 마이그레이션과 운영을 함께 수행했습니다.',
 				'GA4 이벤트 택소노미 설계, Lighthouse 기반 성능 최적화, 외부 추천 솔루션 연동 등 데이터 기반 의사결정 경험을 쌓았습니다.',
+				'사내 홈페이지 신규 개발을 리드하며 기획·UI·관리자 페이지까지 전반을 담당했습니다.',
 			],
 		},
 		{
