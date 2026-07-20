@@ -43,7 +43,7 @@ export const projects: readonly Project[] = [
 		title: 'BEES 스마트빌딩 통합 관제 플랫폼',
 		summary:
 			'에너지(BEMS)·설비(BAS)를 3D로 관제하는 통합 플랫폼 — 3개 페르소나 27개 화면과 프론트 주도 BFF 설계',
-		durationStart: '2026-04',
+		durationStart: '2026-03',
 		durationEnd: '진행중',
 		thumbnail: '/images/projects/bees/BEES-1.png',
 		tags: ['React', 'Next.js', 'TypeScript', 'Zustand', 'TanStack Query', 'Three.js', 'WebSocket', 'Django(BFF)'],

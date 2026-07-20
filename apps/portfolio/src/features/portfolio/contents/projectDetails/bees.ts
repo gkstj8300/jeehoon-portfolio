@@ -13,7 +13,7 @@ export const bees: ProjectDetail = {
 		thumbnail: { src: `${IMG}/BEES-1.png`, alt: 'BEES 통합 대시보드' },
 		meta: [
 			{ icon: 'company', label: 'Company', value: '제이에이치솔루션\n고객사: 삼성물산' },
-			{ icon: 'timeline', label: 'Timeline', value: '2026.04 ~ 진행중' },
+			{ icon: 'timeline', label: 'Timeline', value: '2026.03 ~ 진행중' },
 			{ icon: 'role', label: 'Role', value: 'Frontend 전체 담당\nBFF API 설계·연동' },
 			{ icon: 'stack', label: 'Tech Stack', value: 'Next.js · TypeScript · Zustand\nTanStack Query · Three.js · Django(BFF)' },
 		],
