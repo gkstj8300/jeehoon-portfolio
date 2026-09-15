@@ -83,8 +83,9 @@ export default function Experience() {
 				logoSrc={jhLogoImg.src}
 				durationStart="2026-01"
 				durationEnd="재직중"
-				position="정규직 | 프론트엔드 서비스 개발 | 대리"
+				position="정규직 | 개발본부 | 대리"
 				experienceItems={[
+					'AIoT 기반 소규모 사업장 오염물질 배출 관리 시스템 프론트엔드 설계 및 계측 서버 연동 (FE 1명 / 전체 3명)',
 					'삼성물산 BEES 스마트빌딩 통합 에너지·환경 관제 플랫폼(BEMS/BAS) 프론트엔드 설계 및 BFF 연동 (FE 1명 / 전체 6명)',
 					'삼성물산 연돌 상태 모니터링 시스템(SEMS) 프론트엔드 설계 및 개발 (FE 1명 / 전체 5명)',
 					'JH Solution 기업 홈페이지 리뉴얼 (FE 1명 / 전체 3명)',
@@ -95,7 +96,7 @@ export default function Experience() {
 				logoSrc={naedamLogoImg.src}
 				durationStart="2022-03"
 				durationEnd="2025-03"
-				position="정규직 | 프론트엔드 서비스 개발 | 대리"
+				position="정규직 | Service Frontend Team | 대리"
 				experienceItems={[
 					'한국미스미 커머스 플랫폼 React/Next.js 마이그레이션 (FE 3명 / 전체 6명)',
 					'한국미스미 커머스 플랫폼 데이터 기반 UI/UX 개선 및 운영 (FE 2명 / 전체 3명)',
