@@ -36,6 +36,27 @@ export const categoryFilters = [
 
 export const projects: readonly Project[] = [
 	{
+		slug: 'smb-emission',
+		category: 'jh',
+		categoryLabel: 'JH Solution',
+		company: '제이에이치솔루션',
+		title: 'AI 기반 소규모 사업장 오염물질 배출 관리 플랫폼',
+		summary:
+			'비TMS 폐수배출사업장의 수질·설비 데이터를 AI로 분석하는 국책 R&D 관제 플랫폼 — 3개 역할 16개 화면과 실계측 연동·폴백 설계',
+		durationStart: '2026-08',
+		durationEnd: '진행중',
+		thumbnail: '/images/projects/smb-emission/dashboard.png',
+		tags: ['Next.js', 'React 19', 'TypeScript', 'Tailwind CSS', 'TanStack Query', 'Recharts', 'ThingsBoard', 'Vitest'],
+		highlights: [
+			'사업장·기초지자체·시스템 관리자 3개 역할의 16개 화면을 FSD(entities·features·widgets) 레이어로 단일 코드베이스에서 운영',
+			'조회 범위를 URL 쿼리(scope·site·municipality)로 표현해 역할별 행 수 분기에서 발생하던 SSR 하이드레이션 불일치를 구조적으로 제거',
+			'ThingsBoard 계측 서버 실연동 — 자격증명을 서버 라우트 프록시에 가둬 번들 노출·mixed content를 동시에 차단하고, 미도달 시 fixture 자동 폴백(pending·live·fallback 3상태)',
+			'결측과 0을 끝까지 구분하는 매퍼 설계 — 타임스탬프 격자를 먼저 만들고 채워, 미가동 구간의 전류 0과 통신 두절의 빈칸이 같은 값으로 뭉개지지 않게 방어',
+			'구간 임계를 표본 수가 아닌 «분»으로 정의해 수집 주기 변경(5분→1분)이 판정 기준을 조용히 바꾸던 결함 차단 — 이상 구간 3시간이 36분으로 축소되던 사고',
+			'원문 미정의 값을 PROVISIONAL_ 규약 한 파일로 모으고 모든 수치·라벨에 근거 표기([원문 p.nn]·[TBD]·[INC])를 강제 — 94개 테스트 파일로 규약 자체를 잠금',
+		],
+	},
+	{
 		slug: 'bees',
 		category: 'samsung',
 		categoryLabel: '삼성물산',

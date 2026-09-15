@@ -1,4 +1,5 @@
 import type { ProjectDetail } from './types';
+import { smbEmission } from './smb-emission';
 import { bees } from './bees';
 import { sems } from './sems';
 import { jhSolution } from './jh-solution';
@@ -8,6 +9,7 @@ import { naedamHomepage } from './naedam-homepage';
 import { hanwhaCore } from './hanwha-core';
 
 const all: ProjectDetail[] = [
+	smbEmission,
 	bees,
 	sems,
 	jhSolution,
