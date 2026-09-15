@@ -22,6 +22,7 @@ type ProjectKey = Exclude<keyof typeof project, 'title'>;
 
 
 const logoByKey: Record<ProjectKey, string> = {
+	smbEmission: jhLogo.src,
 	bees: samsungLogo.src,
 	sems: samsungLogo.src,
 	jhHomepage: jhLogo.src,

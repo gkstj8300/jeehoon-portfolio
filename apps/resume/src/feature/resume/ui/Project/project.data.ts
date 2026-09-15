@@ -1,10 +1,21 @@
 export const project = {
 	title: '프로젝트',
+	smbEmission: {
+		name: '제이에이치솔루션',
+		projectName: 'AIoT 기반 소규모 사업장 오염물질 배출 관리 시스템',
+		durationStart: '2026-08',
+		durationEnd: '진행중',
+		skillKeywords: 'React,Next.js,TypeScript,TailwindCSS,TanStack Query,Recharts,Radix UI,Framer Motion,ThingsBoard,Vitest,React Testing Library',
+		development: `산업용 IoT 계측 서버 연동 아키텍처: ThingsBoard 연동을 서버 프록시 / 전송 클라이언트 / 도메인 매퍼 3계층으로 분리해 자격증명이 클라이언트 번들에 노출되지 않는 경계를 Route Handler 1개로 고정. JWT 선제 갱신과 single-flight 큐로 중복 로그인을 차단하고, 첫 로드 2.5초 데드라인 후 내장 데이터로 전환되는 폴백 체계로 서버 재기동·토큰 만료 시에도 화면 가용성 확보.<br />
+									계측 데이터 무결성 통제: 채널별 타임스탬프가 어긋나는 응답을 시각 격자 기반으로 재매핑하고, 결측(null)과 측정값 0을 구분하여 방지시설 미가동 구간이 정상 가동으로 오독되는 오류 차단. 데이터 출처를 3상태(pending/live/fallback)로 노출해 대체 데이터가 실측으로 보이지 않도록 설계.<br />
+									FSD 기반 레이어 아키텍처 및 회귀 통제: Feature-Sliced Design 6레이어(widgets 27 / features 5 / entities 10)로 3개 역할 × 16개 화면을 구성해 화면 증가에 따른 결합도 상승 차단. 소스 41,000줄 대비 테스트 92파일·992케이스를 확보하고, 소스를 직접 파싱해 구조 규약 위반을 잡는 메타 테스트로 재사용 규칙 고정.<br />
+									Claude Code CLI 기반 워크플로우 및 품질 통제: AI 페어 프로그래밍의 최대 리스크인 '그럴듯한 값의 생성'을 막기 위해 코딩 규약·아키텍처·테스트 기준을 9종 규칙 문서로 명문화하고 모든 수치에 출처 태그 강제. 문서와 코드 상수의 불일치를 잡는 21종 자동 검사로 발주처 산출물 3종까지 마크다운 원천에서 자동 생성.`,
+	},
 	bees: {
 		name: '삼성물산',
 		projectName: 'BEES 스마트빌딩 통합 에너지·환경 관제 플랫폼 (BEMS/BAS)',
 		durationStart: '2026-03',
-		durationEnd: '진행중',
+		durationEnd: '2026-07',
 		skillKeywords: 'React,Next.js,TypeScript,Vite,TailwindCSS,Zustand,TanStack Query,Three.js,ECharts,i18next,Django,WebSocket',
 		development: `대시보드 아키텍처 설계: 27개 화면의 조건부 렌더링 복잡도를 제거하고자 페르소나별(관리자/건물주/입주자) 데이터 접근 범위를 격리한 라우팅 시스템 구축 및 유지보수 생산성 극대화<br />
 									프론트엔드 주도형 BFF 설계: Python 기반 시뮬레이터 인프라와의 정렬을 위해 Django/DRF 기반 API 표준 직접 구축. PostgreSQL과 InfluxDB 시계열 데이터를 BFF 단에서 단일 스냅샷으로 집계 처리하여 프론트엔드 컴포넌트 내 데이터 가공 로직 최소화<br />
@@ -14,7 +25,7 @@ export const project = {
 	sems: {
 		name: '삼성물산',
 		projectName: '연돌 상태 모니터링 시스템 (SEMS)',
-		durationStart: '2026-02',
+		durationStart: '2026-01',
 		durationEnd: '2026-03',
 		skillKeywords: 'React,TypeScript,Vite,TailwindCSS,Zustand,TanStack Query,ECharts,i18next',
 		development: `대용량 데이터 스트림 최적화: 초당 수천 건의 IoT 데이터 유입 시 발생하는 메인 스레드 블로킹 해소를 위해 ECharts 인스턴스 재사용 아키텍처 구축. LTTB(Largest-Triangle-Three-Buckets) 다운샘플링 알고리즘을 도입하여 렌더링 오버헤드 감소 및 CPU 점유율 안정화.<br />
