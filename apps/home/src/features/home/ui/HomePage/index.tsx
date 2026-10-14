@@ -1,11 +1,8 @@
-"use client";
+'use client';
 
 import { useOnMounted } from '@jeehoon/hooks';
-import Apps from '../Apps';
-import FeaturedProjects from '../FeaturedProjects';
-import FirstSection from '../FirstSection';
-import SecondSection from '../SecondSection';
-import TheSite from '../TheSite';
+import { MotionProvider } from '@/features/home/lib/motionContext';
+import KineticHome from '../KineticHome';
 import { ga } from '@/shared/lib/logs/analytics';
 import styles from './HomePage.module.scss';
 
@@ -14,11 +11,9 @@ export default function HomePage() {
 
 	return (
 		<main className={styles.container}>
-			<FirstSection />
-			<SecondSection />
-			<FeaturedProjects />
-			<Apps />
-			<TheSite />
+			<MotionProvider>
+				<KineticHome />
+			</MotionProvider>
 		</main>
 	);
 }

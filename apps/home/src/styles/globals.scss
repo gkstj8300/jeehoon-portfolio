@@ -30,6 +30,11 @@ html[data-theme='dark'] {
 	--hm-text-tertiary: #6c6c6c;
 	--hm-card-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.35);
 	--hm-card-shadow-hover: 0 1rem 3rem rgba(250, 36, 84, 0.18), 0 0.25rem 1rem rgba(0, 0, 0, 0.45);
+
+	/* 브랜드 핑크를 어두운 배경에서 읽히게 띄운 값 — 본문 링크·강조에 쓴다 */
+	--hm-accent-readable: #ff7798;
+	/* 포인터가 지나간 자리에 깔리는 옅은 브랜드 바탕 */
+	--hm-accent-wash: #351e27;
 }
 
 html[data-theme='light'] {
@@ -43,6 +48,10 @@ html[data-theme='light'] {
 	--hm-text-tertiary: #8a8a8a;
 	--hm-card-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.06);
 	--hm-card-shadow-hover: 0 1rem 3rem rgba(250, 36, 84, 0.14), 0 0.25rem 1rem rgba(0, 0, 0, 0.06);
+
+	/* 밝은 배경에서는 브랜드 핑크를 한 단계 눌러야 본문 대비가 선다 */
+	--hm-accent-readable: #d61c47;
+	--hm-accent-wash: #fff0f4;
 }
 
 body,

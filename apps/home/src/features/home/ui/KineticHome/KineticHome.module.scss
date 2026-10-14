@@ -1,0 +1,727 @@
+/* 시안(docs/baakhan-kinetic-home.html)의 구성을 Home 디자인 시스템 위에 얹는다.
+   색·반경·그림자·전환은 전부 globals.scss의 --hm-* 토큰을 거치고,
+   크기는 rem, 자간은 em으로 적는다 — 저장소의 다른 Home 컴포넌트와 같은 규칙이다. */
+.root {
+	position: relative;
+	/* 좌우 여백은 StandardLayout(.layout)이 이미 준다 — 여기서 또 주면 거터가 두 겹이 된다 */
+	max-width: var(--hm-max-w);
+	margin: 0 auto;
+	color: var(--hm-text-primary);
+	font-family: var(--font-preten-dard), 'Noto Sans KR', sans-serif;
+	font-size: 0.875rem;
+	line-height: 1.7;
+
+	/* `:where()`로 명시도를 0으로 낮춘다 — `.root a`(0,1,1)로 두면 아래의
+	   `.contact`·`.playLink`(0,1,0)가 지정한 색을 이 리셋이 덮어 버린다 */
+	:where(button, a) {
+		font: inherit;
+		color: inherit;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	button {
+		background: none;
+		border: 0;
+		cursor: pointer;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	button:focus-visible,
+	a:focus-visible {
+		outline: 2px solid var(--hm-accent);
+		outline-offset: 0.3125rem;
+	}
+}
+
+/* 모션을 멈출 때는 전환을 끄고, 드러남 효과를 «보이는 상태»로 고정한다 */
+.root[data-still='true'] {
+	*,
+	*::before {
+		transition: none !important;
+	}
+
+	.door {
+		opacity: 1 !important;
+		transform: none !important;
+	}
+}
+
+/* ── 공통 ───────────────────────────────────── */
+/* SectionHeader와 같은 라벨 규칙: 0.75rem · 600 · 0.1em · 대문자 · 포인트색 */
+.label {
+	display: inline-block;
+	margin-bottom: 0.75rem;
+	color: var(--hm-accent);
+	font-weight: 600;
+	font-size: 0.75rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+/* ── 진행 표시 ───────────────────────────────── */
+.progressTrack {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 40;
+	width: 100%;
+	height: 0.125rem;
+	pointer-events: none;
+}
+
+.progressBar {
+	width: 100%;
+	height: 100%;
+	background: var(--hm-accent);
+	transform: scaleX(0);
+	transform-origin: left;
+}
+
+/* ── 히어로 ─────────────────────────────────── */
+.hero {
+	position: relative;
+	padding: 2.5rem 0 0;
+	overflow: hidden;
+}
+
+.overline {
+	display: flex;
+	align-items: center;
+	color: var(--hm-text-tertiary);
+	font-weight: 600;
+	font-size: 0.75rem;
+	letter-spacing: 0.1em;
+}
+
+.dot {
+	display: inline-block;
+	width: 0.375rem;
+	height: 0.375rem;
+	margin-right: 0.5rem;
+	background: var(--hm-accent);
+	border-radius: 50%;
+}
+
+.heroGrid {
+	display: grid;
+	grid-template-columns: 1.1fr 1fr;
+	gap: 1rem;
+	align-items: center;
+	min-height: 26.75rem;
+	padding: 1.5rem 0 1.125rem;
+}
+
+.intro {
+	position: relative;
+	z-index: 3;
+}
+
+.hello {
+	margin-bottom: 1rem;
+	color: var(--hm-text-secondary);
+	font-size: 0.9375rem;
+}
+
+.title {
+	color: var(--hm-text-primary);
+	font-weight: 800;
+	font-size: clamp(2.5rem, 5.5vw, 3.9375rem);
+	line-height: 1.18;
+	letter-spacing: -0.06em;
+	word-break: keep-all;
+}
+
+.titleAccent {
+	color: var(--hm-accent-readable);
+	font-style: normal;
+}
+
+.summary {
+	margin-top: 1.5rem;
+	color: var(--hm-text-secondary);
+	font-size: 1rem;
+	line-height: 1.7;
+	word-break: keep-all;
+}
+
+.stage {
+	position: relative;
+	height: 21.25rem;
+	perspective: 68.75rem;
+	isolation: isolate;
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 3% 0;
+		background: radial-gradient(ellipse, var(--hm-accent-wash), transparent 68%);
+		border-radius: 50%;
+		transform: translate(
+			calc(var(--mx, 0) * 0.75rem),
+			calc(var(--my, 0) * 0.75rem)
+		);
+		pointer-events: none;
+	}
+}
+
+.orbit {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 16.875rem;
+	height: 16.875rem;
+	border: 1px solid var(--hm-border);
+	border-radius: 50%;
+	transform: translate(-50%, -50%) rotateX(60deg) rotateZ(-25deg);
+	pointer-events: none;
+}
+
+.tile {
+	display: flex;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	flex-direction: column;
+	width: 11.25rem;
+	height: 13.4375rem;
+	padding: 1.25rem;
+	background: var(--hm-surface);
+	border: 1px solid var(--hm-border);
+	border-radius: var(--hm-radius-lg);
+	box-shadow: var(--hm-card-shadow);
+	transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty)))
+		rotate(var(--turn)) rotateY(calc(var(--mx, 0) * 5deg));
+	transform-style: preserve-3d;
+	transition: transform 0.38s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.38s;
+
+	&:nth-of-type(1) {
+		--tx: -5.0625rem;
+		--ty: 0.5rem;
+		--turn: -17deg;
+
+		z-index: 1;
+	}
+
+	&:nth-of-type(2) {
+		--tx: 3.9375rem;
+		--ty: -1.9375rem;
+		--turn: 12deg;
+
+		z-index: 2;
+		background: var(--hm-surface-2);
+	}
+
+	&:nth-of-type(3) {
+		--tx: 0.25rem;
+		--ty: 2.75rem;
+		--turn: -3deg;
+
+		z-index: 3;
+		background: var(--hm-accent);
+		border-color: var(--hm-accent);
+		color: #fff;
+	}
+
+	&:hover,
+	&:focus-visible {
+		z-index: 5;
+		border-color: var(--hm-accent);
+		box-shadow: var(--hm-card-shadow-hover);
+		transform: translate(calc(-50% + var(--tx)), calc(-65% + var(--ty)))
+			rotate(0deg);
+	}
+
+	small {
+		display: flex;
+		justify-content: space-between;
+		font-weight: 600;
+		font-size: 0.75rem;
+		letter-spacing: 0.08em;
+	}
+
+	strong {
+		margin: auto 0;
+		font-weight: 800;
+		font-size: 2.1875rem;
+		line-height: 1.15;
+		letter-spacing: -0.05em;
+	}
+
+	p {
+		font-size: 0.75rem;
+	}
+
+	&:nth-of-type(1) small,
+	&:nth-of-type(2) small {
+		color: var(--hm-text-tertiary);
+	}
+
+	&:nth-of-type(1) p,
+	&:nth-of-type(2) p {
+		color: var(--hm-text-secondary);
+	}
+}
+
+.tileEmphasized {
+	font-weight: 800;
+	font-size: 3.25rem;
+	line-height: 1.1;
+	letter-spacing: -0.06em;
+}
+
+.bottomline {
+	padding: 1rem 0 1.5rem;
+	color: var(--hm-text-tertiary);
+	font-size: 0.75rem;
+	letter-spacing: 0.04em;
+	text-align: right;
+}
+
+/* ── 가로 레일 ──────────────────────────────── */
+.rail {
+	position: relative;
+	padding: 0.875rem 0;
+	border-top: 1px solid var(--hm-border);
+	border-bottom: 1px solid var(--hm-border);
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.railInner {
+	display: flex;
+	gap: 1.875rem;
+	width: max-content;
+	font-weight: 700;
+	font-size: 2.125rem;
+	line-height: 1.5;
+	letter-spacing: -0.04em;
+	will-change: transform;
+
+	span:nth-child(even) {
+		color: var(--hm-accent);
+	}
+}
+
+/* ── 네 갈래 안내 ───────────────────────────── */
+.hub {
+	display: grid;
+	position: relative;
+	grid-template-columns: 0.8fr 1.2fr;
+	gap: 3rem;
+	padding: 5rem 0;
+}
+
+.hubAside {
+	position: sticky;
+	top: 7rem;
+	align-self: start;
+	padding-bottom: 0.625rem;
+	overflow: hidden;
+}
+
+.hubTitle {
+	margin-bottom: 0.875rem;
+	color: var(--hm-text-primary);
+	font-weight: 800;
+	font-size: clamp(1.625rem, 3.4vw, 2.125rem);
+	line-height: 1.3;
+	letter-spacing: -0.025em;
+}
+
+.hubText {
+	color: var(--hm-text-secondary);
+	font-size: 1rem;
+	line-height: 1.7;
+	word-break: keep-all;
+}
+
+.chapterArt {
+	display: flex;
+	position: relative;
+	align-items: flex-end;
+	height: 10rem;
+	margin-top: 1.75rem;
+	border-bottom: 1px solid var(--hm-border);
+	overflow: hidden;
+}
+
+.chapterIndex {
+	color: var(--hm-accent-wash);
+	font-weight: 800;
+	font-size: 7.875rem;
+	line-height: 1;
+	letter-spacing: -0.08em;
+	-webkit-text-stroke: 1px var(--hm-border-strong);
+	transition: var(--hm-transition);
+}
+
+.chapterName {
+	position: absolute;
+	bottom: 1.3125rem;
+	left: 1.375rem;
+	color: var(--hm-accent-readable);
+	font-weight: 700;
+	font-size: 1.625rem;
+	letter-spacing: -0.02em;
+}
+
+.chapterDots {
+	display: flex;
+	gap: 0.4375rem;
+	margin-top: 0.9375rem;
+
+	i {
+		flex: 1;
+		height: 0.1875rem;
+		background: var(--hm-border-strong);
+		transition: var(--hm-transition);
+	}
+}
+
+.chapterDotActive {
+	background: var(--hm-accent) !important;
+}
+
+.door {
+	display: block;
+	position: relative;
+	min-height: 11.9375rem;
+	padding: 1.75rem 1.25rem 1.875rem;
+	border-top: 1px solid var(--hm-border);
+	scroll-margin-top: 6.5rem;
+	isolation: isolate;
+	overflow: hidden;
+	opacity: var(--reveal-opacity, 1);
+	transform: translateY(var(--reveal-y, 0));
+	transition: transform 0.14s linear, opacity 0.14s linear;
+
+	&:last-child {
+		border-bottom: 1px solid var(--hm-border);
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background: radial-gradient(
+			13.125rem circle at var(--px, 50%) var(--py, 50%),
+			var(--hm-accent-wash),
+			transparent 90%
+		);
+		opacity: 0;
+		transition: var(--hm-transition);
+	}
+
+	&:hover::before,
+	&:focus-visible::before {
+		opacity: 1;
+	}
+
+	&:hover .doorName {
+		transform: translateX(0.5rem);
+	}
+
+	&:hover .arrow {
+		background: var(--hm-accent);
+		border-color: var(--hm-accent);
+		color: #fff;
+		transform: rotate(45deg);
+	}
+
+	p {
+		color: var(--hm-text-secondary);
+		font-size: 0.9375rem;
+		line-height: 1.6;
+		word-break: keep-all;
+	}
+}
+
+.doorTop {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: var(--hm-text-tertiary);
+	font-weight: 600;
+	font-size: 0.75rem;
+	letter-spacing: 0.04em;
+}
+
+.doorTitle {
+	display: flex;
+	gap: 1rem;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0.75rem 0 0.4375rem;
+}
+
+.doorName {
+	font-weight: 800;
+	font-size: clamp(1.8125rem, 4.3vw, 2.75rem);
+	line-height: 1.2;
+	letter-spacing: -0.04em;
+	transition: var(--hm-transition);
+}
+
+.arrow {
+	display: grid;
+	place-items: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	border: 1px solid var(--hm-border);
+	border-radius: 50%;
+	font-size: 1.3125rem;
+	transition: var(--hm-transition);
+}
+
+.doorQuestion {
+	margin: 0.75rem 0 0.1875rem;
+	color: var(--hm-text-primary) !important;
+	font-weight: 600;
+	font-size: 1rem !important;
+}
+
+/* ── 글자 웨이브 ────────────────────────────── */
+.play {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 2.5rem;
+	align-items: center;
+	padding: 2.5rem;
+	background: var(--hm-surface-2);
+	border: 1px solid var(--hm-border);
+	border-radius: var(--hm-radius-lg);
+	overflow: hidden;
+
+	h2 {
+		margin-bottom: 0.875rem;
+		color: var(--hm-text-primary);
+		font-weight: 800;
+		font-size: clamp(1.625rem, 3.4vw, 2.125rem);
+		line-height: 1.3;
+		letter-spacing: -0.025em;
+	}
+
+	p {
+		color: var(--hm-text-secondary);
+		font-size: 1rem;
+		line-height: 1.7;
+	}
+}
+
+.playLink {
+	display: inline-block;
+	margin-top: 1.25rem;
+	color: var(--hm-accent-readable);
+	font-weight: 600;
+	font-size: 0.9375rem;
+}
+
+.wave {
+	display: flex;
+	gap: 0.125rem;
+	justify-content: center;
+	align-items: center;
+	height: 9.375rem;
+	color: var(--hm-accent-readable);
+	user-select: none;
+	touch-action: pan-y;
+
+	span {
+		display: inline-block;
+		font-weight: 800;
+		font-size: clamp(2.75rem, 8vw, 5rem);
+		letter-spacing: -0.05em;
+		transform: translateY(var(--letter-y, 0)) rotate(var(--letter-r, 0deg));
+		transition: transform 0.18s ease-out;
+	}
+}
+
+/* ── 마무리 ─────────────────────────────────── */
+.finale {
+	position: relative;
+	padding: 5rem 0 2.5rem;
+	overflow: hidden;
+}
+
+.finaleTop {
+	display: flex;
+	gap: 1.5rem;
+	justify-content: space-between;
+	align-items: center;
+
+	h2 {
+		color: var(--hm-text-primary);
+		font-weight: 800;
+		font-size: clamp(1.625rem, 3.4vw, 2.5rem);
+		line-height: 1.3;
+		letter-spacing: -0.03em;
+	}
+}
+
+.contact {
+	display: grid;
+	flex-shrink: 0;
+	place-items: center;
+	align-content: center;
+	gap: 0.25rem;
+	width: 7.125rem;
+	height: 7.125rem;
+	/* 두 테마 공통값으로 고정한다 — 다크에서 --hm-accent-readable(밝은 핑크)을 쓰면
+	   흰 글자와의 대비가 무너진다 */
+	background: var(--hm-accent-hover);
+	border-radius: 50%;
+	color: #fff;
+	font-weight: 600;
+	font-size: 0.75rem;
+	transition: var(--hm-transition);
+
+	span {
+		font-size: 1.8125rem;
+		line-height: 1.3;
+	}
+}
+
+.signature {
+	margin: 2.5rem 0 0.75rem;
+	font-weight: 800;
+	font-size: clamp(3.5rem, 15vw, 10.5rem);
+	line-height: 1.15;
+	letter-spacing: -0.075em;
+	transform-origin: left center;
+	will-change: transform;
+
+	span {
+		color: var(--hm-accent);
+	}
+}
+
+/* ── 좁은 화면 ──────────────────────────────── */
+@media (max-width: 768px) {
+	.hero {
+		padding-top: 1.75rem;
+	}
+
+	.heroGrid {
+		grid-template-columns: 1fr;
+		gap: 0.75rem;
+		padding-top: 1.875rem;
+	}
+
+	.title {
+		font-size: 2.9375rem;
+	}
+
+	.summary {
+		margin-top: 1.1875rem;
+		font-size: 0.9375rem;
+	}
+
+	.stage {
+		height: 18.125rem;
+		margin-top: 0.25rem;
+	}
+
+	.tile {
+		width: 9.125rem;
+		height: 10.9375rem;
+		padding: 0.9375rem;
+
+		&:nth-of-type(1) {
+			--tx: -3.9375rem;
+			--ty: 0rem;
+		}
+
+		&:nth-of-type(2) {
+			--tx: 3.375rem;
+			--ty: -1.125rem;
+		}
+
+		&:nth-of-type(3) {
+			--tx: 0rem;
+			--ty: 2.1875rem;
+		}
+
+		strong {
+			font-size: 1.8125rem;
+		}
+	}
+
+	.tileEmphasized {
+		font-size: 2.6875rem;
+	}
+
+	.railInner {
+		gap: 1.25rem;
+		font-size: 1.6875rem;
+	}
+
+	.hub {
+		grid-template-columns: 1fr;
+		gap: 1.375rem;
+		padding: 3rem 0;
+	}
+
+	.hubAside {
+		position: relative;
+		top: 0;
+	}
+
+	.chapterArt,
+	.chapterDots {
+		display: none;
+	}
+
+	.door {
+		min-height: 11.125rem;
+		padding: 1.4375rem 0.75rem;
+	}
+
+	.play {
+		grid-template-columns: 1fr;
+		gap: 0.625rem;
+		padding: 1.875rem 1.375rem;
+	}
+
+	.wave {
+		height: 8.4375rem;
+	}
+
+	.finale {
+		padding: 3rem 0 1.625rem;
+	}
+
+	.contact {
+		width: 5.125rem;
+		height: 5.125rem;
+		font-size: 0.6875rem;
+
+		span {
+			font-size: 1.5rem;
+		}
+	}
+
+	.signature {
+		margin-top: 2.125rem;
+		font-size: 17vw;
+		letter-spacing: -0.065em;
+	}
+}
+
+/* 사용자가 OS에서 모션을 줄였다면 전환을 멈춘다 */
+@media (prefers-reduced-motion: reduce) {
+	.root {
+		*,
+		*::before {
+			transition: none !important;
+		}
+	}
+
+	.door {
+		opacity: 1 !important;
+		transform: none !important;
+	}
+}
