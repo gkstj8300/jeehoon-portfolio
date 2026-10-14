@@ -1,3 +1,12 @@
-export { apps, appsSection, type AppCard, type AppId } from './apps';
-export { featuredProjects, featuredSection, type FeaturedProject } from './featured';
-export { site } from './site';
+export {
+	hero,
+	heroTiles,
+	railWords,
+	hub,
+	chapters,
+	play,
+	finale,
+	type ChapterId,
+	type HeroTile,
+	type Chapter,
+} from './kinetic';
