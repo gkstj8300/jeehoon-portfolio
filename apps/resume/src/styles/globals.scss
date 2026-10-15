@@ -9,6 +9,24 @@
 		color 0.4s ease;
 }
 
+/* Resume 본문 토큰 — 테마에 따라 값이 바뀌어야 해서 :root가 아니라 테마별로 정의한다.
+   --color-text-secondary(#717171)는 두 테마가 같은 값을 써서 어두운 배경에서 대비가 4.3:1로 떨어진다. */
+html[data-theme='light'] {
+	--rs-muted: #535353;
+	--rs-line: rgba(0, 0, 0, 0.12);
+	/* 작은 글자의 포인트색. 브랜드 핑크(#fa2454)는 흰 바탕에서 3.86:1이라 본문 크기에서
+	   AA(4.5:1)에 못 미친다 — 한 단계 누른 값을 쓴다(5.10:1) */
+	--rs-accent-text: #d61c47;
+}
+
+html[data-theme='dark'] {
+	--rs-muted: #b2b2b9;
+	--rs-line: rgba(255, 255, 255, 0.16);
+	/* 검은 바탕에서는 브랜드 핑크가 그대로 5.45:1이다 */
+	--rs-accent-text: #fa2454;
+}
+
+
 body,
 div,
 span,

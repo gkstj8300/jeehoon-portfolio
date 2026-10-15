@@ -1,80 +1,219 @@
-export const project = {
-	title: '프로젝트',
-	smbEmission: {
-		name: '제이에이치솔루션',
-		projectName: 'AIoT 기반 소규모 사업장 오염물질 배출 관리 시스템',
-		durationStart: '2026-08',
-		durationEnd: '진행중',
-		skillKeywords: 'React,Next.js,TypeScript,TailwindCSS,TanStack Query,Recharts,Radix UI,Framer Motion,ThingsBoard,Vitest,React Testing Library',
-		development: `산업용 IoT 계측 서버 연동 아키텍처: ThingsBoard 연동을 서버 프록시 / 전송 클라이언트 / 도메인 매퍼 3계층으로 분리해 자격증명이 클라이언트 번들에 노출되지 않는 경계를 Route Handler 1개로 고정. JWT 선제 갱신과 single-flight 큐로 중복 로그인을 차단하고, 첫 로드 2.5초 데드라인 후 내장 데이터로 전환되는 폴백 체계로 서버 재기동·토큰 만료 시에도 화면 가용성 확보.<br />
-									계측 데이터 무결성 통제: 채널별 타임스탬프가 어긋나는 응답을 시각 격자 기반으로 재매핑하고, 결측(null)과 측정값 0을 구분하여 방지시설 미가동 구간이 정상 가동으로 오독되는 오류 차단. 데이터 출처를 3상태(pending/live/fallback)로 노출해 대체 데이터가 실측으로 보이지 않도록 설계.<br />
-									FSD 기반 레이어 아키텍처 및 회귀 통제: Feature-Sliced Design 6레이어(widgets 27 / features 5 / entities 10)로 3개 역할 × 16개 화면을 구성해 화면 증가에 따른 결합도 상승 차단. 소스 41,000줄 대비 테스트 92파일·992케이스를 확보하고, 소스를 직접 파싱해 구조 규약 위반을 잡는 메타 테스트로 재사용 규칙 고정.<br />
-									Claude Code CLI 기반 워크플로우 및 품질 통제: AI 페어 프로그래밍의 최대 리스크인 '그럴듯한 값의 생성'을 막기 위해 코딩 규약·아키텍처·테스트 기준을 9종 규칙 문서로 명문화하고 모든 수치에 출처 태그 강제. 문서와 코드 상수의 불일치를 잡는 21종 자동 검사로 발주처 산출물 3종까지 마크다운 원천에서 자동 생성.`,
-	},
-	bees: {
-		name: '삼성물산',
-		projectName: 'BEES 스마트빌딩 통합 에너지·환경 관제 플랫폼 (BEMS/BAS)',
-		durationStart: '2026-03',
-		durationEnd: '2026-07',
-		skillKeywords: 'React,Next.js,TypeScript,Vite,TailwindCSS,Zustand,TanStack Query,Three.js,ECharts,i18next,Django,WebSocket',
-		development: `대시보드 아키텍처 설계: 27개 화면의 조건부 렌더링 복잡도를 제거하고자 페르소나별(관리자/건물주/입주자) 데이터 접근 범위를 격리한 라우팅 시스템 구축 및 유지보수 생산성 극대화<br />
-									프론트엔드 주도형 BFF 설계: Python 기반 시뮬레이터 인프라와의 정렬을 위해 Django/DRF 기반 API 표준 직접 구축. PostgreSQL과 InfluxDB 시계열 데이터를 BFF 단에서 단일 스냅샷으로 집계 처리하여 프론트엔드 컴포넌트 내 데이터 가공 로직 최소화<br />
-									실시간 데이터 가용성 99.9% 보장: 웹소켓 장애 대응을 위해 TanStack Query 폴링(60s)으로 전환되는 이중 폴백 메커니즘을 커스텀 훅으로 구현. 웹소켓 재연결 시 레이스 컨디션을 방지하는 State Synchronization 전략 적용<br />
-									AI 생성 코드 안정성 확보: Claude Code 활용으로 생산성을 높이되, 생성된 Three.js 내부 WebGL 컨텍스트의 가비지 컬렉션 누수를 크롬 힙 스냅샷으로 식별 후 수동 dispose 로직으로 보완`,
-	},
-	sems: {
-		name: '삼성물산',
-		projectName: '연돌 상태 모니터링 시스템 (SEMS)',
-		durationStart: '2026-01',
-		durationEnd: '2026-03',
-		skillKeywords: 'React,TypeScript,Vite,TailwindCSS,Zustand,TanStack Query,ECharts,i18next',
-		development: `대용량 데이터 스트림 최적화: 초당 수천 건의 IoT 데이터 유입 시 발생하는 메인 스레드 블로킹 해소를 위해 ECharts 인스턴스 재사용 아키텍처 구축. LTTB(Largest-Triangle-Three-Buckets) 다운샘플링 알고리즘을 도입하여 렌더링 오버헤드 감소 및 CPU 점유율 안정화.<br />
-									상태 관리 전략 수립: 자주 변경되는 관제 데이터는 TanStack Query 캐시로, 다국어 및 UI 상태는 Zustand로 엄격히 분리하여 상태 변화의 예측 가능성 확보.<br />
-									AI 기반 디자인-개발 워크플로우 자동화: Claude Code와 Figma MCP를 연동하여 디자인 토큰 기반 마크업 초안 생성을 자동화하여 UI 구현 리드타임 단축.<br />
-									MSW 기반 독립적 개발 환경: API 명세 단계에서 Mock 서버를 선제 구축하여 백엔드 의존성 없이 프론트엔드 비즈니스 로직 100% 독립 구현.`,
-	},
-	jhHomepage: {
-		name: 'JH Solution',
-		projectName: '기업 홈페이지 리뉴얼',
-		durationStart: '2026-01',
-		durationEnd: '2026-03',
-		skillKeywords: 'Gatsby,React,CSS Modules,GraphQL,AWS S3,CloudFront,GitHub Actions,Docker',
-		development: `Gatsby 5(SSG) 도입 및 정적 마크다운 기반 Git-CMS 워크플로우 구축으로 인프라 운영 비용 제로화. Google Forms API 기반 서버리스 Contact 기능 구현.`,
-	},
-	misumiRenewal: {
-		name: '한국미스미',
-		projectName: '커머스 플랫폼 React/Next.js 마이그레이션',
-		durationStart: '2024-04',
-		durationEnd: '2025-03',
-		skillKeywords: 'React,TypeScript,Next.js,Redux,Sass,Styled-components',
-		development: `전면 개편 및 무중단 스위칭 전략: RxJS/Twig 기반 레거시 시스템을 Next.js 기반 아키텍처로 재설계. 신·구 시스템 간 데이터 정합성을 검증하는 병렬 운영 기간을 거쳐, DNS 및 리버스 프록시 레벨의 라우팅 스위칭 전략을 통해 단 한 번의 서비스 중단 없이 To-be 시스템 런칭 성공.<br />
-									Core Web Vitals 최적화를 통한 비즈니스 지표 개선: 이미지 Lazy Loading, 스크립트 로딩 우선순위 조정, CDN 캐싱 전략 최적화를 적용하여 LCP(Largest Contentful Paint)를 3.5초에서 1.4초로 60% 단축. 결과적으로 GA 기준 사용자 이탈률 15%p 감소 견인.<br />
-									디바이스별 타겟 번들링 최적화: @next/bundle-analyzer를 통한 번들 크기 정밀 분석으로 PC와 Mobile의 엔트리포인트를 런타임에 분리. 모바일 환경에서 불필요한 번들 사이즈를 제거하여 저사양 모바일 기기의 초기 진입 속도 대폭 개선.`,
-	},
-	misumiMaintenance: {
-		name: '한국미스미',
-		projectName: '데이터 기반 UI/UX 개선 및 운영',
-		durationStart: '2023-04',
-		durationEnd: '2024-04',
-		skillKeywords: 'RxJS,Twig,JavaScript,jQuery,PHP',
-		development: `전환율 최적화(CRO) 달성: GA4 히트맵 및 유저 세션 분석을 통해 결제 및 장바구니 페이지 내 주요 이탈 구간을 식별. CTA 버튼 배치 최적화 및 정보 구조 개편을 통해 구매 전환율 12% 상승 달성.<br />
-									데이터 드리븐 인프라 구축: GTM 및 dataLayer 표준 규격을 설계하여 유저의 핵심 행동 궤적(PV, 검색, 스크롤 인터랙션, 주문) 트래킹 체계 마련. 사내 데이터 기반 의사결정의 기반 제공.<br />
-									외부 추천 솔루션 API 연동: 페이지별 개인화 상품 추천 배너 구현. 도입 전/후 데이터 비교로 재방문율 15% 증가, 구매 전환율 약 8% 상승 확인`,
-	},
-	naedam: {
-		name: '내담씨앤씨',
-		projectName: '사내 홈페이지 리뉴얼',
-		durationStart: '2022-12',
-		durationEnd: '2023-03',
-		skillKeywords: 'Java,Spring Boot,JavaScript,jQuery,MariaDB',
-		development: `Java + Spring Boot 기반 사내 홈페이지 전면 리뉴얼. UI/UX 플로우 기획, 반응형 UI 구현, 쿠기 기반 다국어 기능(국/영), 관리자 시스템 개발`,
-	},
-	hanwha: {
-		name: '한화생명',
-		projectName: '코어 시스템 구축 프로젝트',
-		durationStart: '2022-05',
-		durationEnd: '2022-12',
-		skillKeywords: 'Java,JavaScript,jQuery,KendoUI,Oracle',
-		development: `생명보험 손해보험 수수료 확인 계산 업무 화면 설계 및 구현 보험 정책 변경에 따른 유지보수 주도`,
-	},
+import { url } from '@jeehoon/utils';
+
+/**
+ * 상세 안의 한 묶음 — 제목 없이 목록만 둘 수도 있다.
+ * 항목 안의 `**…**`는 굵게 강조할 구간이다(시안의 강조 위치를 그대로 옮긴다).
+ */
+export interface DetailBlock {
+	heading?: string;
+	items: readonly string[];
+}
+
+export interface ProjectEntry {
+	ordinal: string;
+	title: string;
+	meta: string;
+	/** 대표 프로젝트만 갖는 값들 */
+	featured?: {
+		tag: string;
+		problem: string;
+		solution: string;
+		outcomeLabel: string;
+		outcome: string;
+		outcomeNote: string;
+		href: string;
+	};
+	stack?: string;
+	blocks: readonly DetailBlock[];
+	/** 기본으로 펼쳐 둘지 */
+	defaultOpen?: boolean;
+}
+
+const projectUrl = (slug: string) => `${url.portfolio}/projects/${slug}/`;
+
+export const projectSection = {
+	eyebrow: '02 · 프로젝트',
+	title: '문제와 해결의 기록.',
+	aside: '대표 프로젝트 4개 · 문제, 판단, 검증을 중심으로',
+	groupLabel: '기타 프로젝트 · 제품 개선과 개발 경험',
 } as const;
+
+/** 대표 프로젝트. 순서가 곧 화면 순서이자 번호다 */
+export const featuredProjects: readonly ProjectEntry[] = [
+	{
+		ordinal: '01',
+		title: 'AIoT 오염물질 배출 관리 시스템',
+		meta: '제이에이치솔루션 · 2026.08 — 진행 중 · FE 1명 / 전체 3명',
+		defaultOpen: true,
+		featured: {
+			tag: '데이터 신뢰성 · AI 개발 품질 관리',
+			problem:
+				'계측 서버가 응답하지 않거나 데이터가 누락될 때, 대체 값이 정상 실측값으로 해석될 수 있었습니다.',
+			solution:
+				'연동 책임을 3계층으로 나누고 토큰 갱신·폴백을 설계했습니다. 결측과 0을 구분하고 데이터 출처를 화면에 표시했습니다.',
+			outcomeLabel: '설계한 동작',
+			outcome: '실측·대체 구분',
+			outcomeNote: 'pending / live / fallback',
+			href: projectUrl('smb-emission'),
+		},
+		stack: 'React · Next.js · TypeScript · TanStack Query · ThingsBoard · Vitest',
+		blocks: [
+			{
+				heading: '담당 범위와 기술적 판단',
+				items: [
+					'**서버 프록시·전송 클라이언트·도메인 매퍼**로 책임을 분리했습니다. 자격증명은 서버 경계에서 관리하고 JWT 선제 갱신과 single-flight 큐로 중복 인증 요청을 제어했습니다.',
+					'시각이 어긋난 계측 응답을 시간 격자에 맞춰 매핑하고, 결측값을 0으로 처리하지 않도록 구분했습니다.',
+				],
+			},
+			{
+				heading: 'AI 활용과 검증',
+				items: [
+					'Claude Code를 활용하는 개발 과정에서 **코딩 규약·아키텍처·테스트 기준을 문서화**하고, 수치에 출처를 붙이도록 규칙을 정했습니다.',
+					'회귀 테스트와 구조 규약 검사로 변경을 확인하고, 문서와 코드 상수의 불일치를 검사하는 자동화를 구성했습니다.',
+				],
+			},
+		],
+	},
+	{
+		ordinal: '02',
+		title: '삼성물산 BEES 스마트빌딩 통합 에너지·환경 관제 플랫폼',
+		meta: '제이에이치솔루션 · 2026.03 — 2026.07 · 프론트엔드 1명 / 전체 6명',
+		featured: {
+			tag: '실시간 서비스 · 장애 대응',
+			problem:
+				'역할마다 다른 데이터 접근 범위와 실시간 연결 장애에 대응해야 했습니다.',
+			solution:
+				'권한별 라우팅을 설계하고 WebSocket 장애 시 REST 폴링으로 전환하도록 구성했습니다.',
+			outcomeLabel: '담당 범위',
+			outcome: '27개 화면',
+			outcomeNote: '권한별 라우팅 · BFF 연동',
+			href: projectUrl('bees'),
+		},
+		stack: 'React · Next.js · TypeScript · Zustand · TanStack Query · Django · WebSocket',
+		blocks: [
+			{
+				heading: '담당 범위와 기술적 판단',
+				items: [
+					'관리자·건물주·입주자의 데이터 접근 범위를 분리한 라우팅 구조를 설계했습니다.',
+					'Django 기반 BFF에서 PostgreSQL·InfluxDB 데이터를 단일 스냅샷으로 집계해, 데이터 조합 책임을 화면 컴포넌트에서 서버로 옮겼습니다.',
+					'WebSocket 장애 시 REST 폴링으로 전환하고, 재연결 시 데이터 동기화 충돌을 제어했습니다.',
+				],
+			},
+			{
+				heading: 'AI 생성 코드의 런타임 검증',
+				items: [
+					'AI가 생성한 Three.js 코드의 WebGL 자원 누수를 Chrome 힙 스냅샷으로 추적하고, 명시적인 dispose 처리로 보완했습니다.',
+				],
+			},
+		],
+	},
+	{
+		ordinal: '03',
+		title: '한국미스미 커머스 플랫폼 React / Next.js 마이그레이션',
+		meta: '내담씨앤씨 · 2024.04 — 2025.03 · 프론트엔드 3명 / 전체 6명',
+		featured: {
+			tag: '무중단 전환 · 웹 성능',
+			problem:
+				'레거시 커머스를 서비스 중단 없이 전환하면서 로딩 성능을 개선해야 했습니다.',
+			solution:
+				'신·구 시스템 병렬 운영과 정합성 검증, 이미지·스크립트·CDN 최적화를 진행했습니다.',
+			outcomeLabel: '성과',
+			outcome: '3.5초 → 1.4초',
+			outcomeNote: 'LCP 60% 단축',
+			href: projectUrl('misumi-renewal'),
+		},
+		stack: 'React · TypeScript · Next.js · Redux · Sass · Styled-components',
+		blocks: [
+			{
+				heading: '담당 범위와 기술적 판단',
+				items: [
+					'FE 3명으로 구성된 팀에서 RxJS·Twig 기반 커머스의 React·Next.js 전환에 참여했습니다. 신·구 시스템을 병렬 운영하며 정합성을 검증한 뒤 서비스 중단 없이 전환했습니다.',
+					'Core Web Vitals의 LCP 개선을 목표로 이미지 로딩·스크립트 우선순위·CDN 캐싱을 최적화해, LCP를 3.5초에서 1.4초로 단축했습니다.',
+					'번들 분석과 PC·모바일 엔트리포인트 분리로 모바일에서 불필요한 코드를 로드하지 않도록 개선했습니다.',
+				],
+			},
+		],
+	},
+	{
+		ordinal: '04',
+		title: '한국미스미 데이터 기반 UI / UX 개선 및 운영',
+		meta: '내담씨앤씨 · 2023.04 — 2024.04 · 프론트엔드 2명 / 전체 3명',
+		featured: {
+			tag: '데이터 기반 개선 · 사용자 행동 분석',
+			problem:
+				'결제·장바구니에서 사용자가 이탈하는 구간을 찾고, 그 판단의 근거가 될 행동 데이터를 마련해야 했습니다.',
+			solution:
+				'GTM·dataLayer 기반 행동 추적 표준을 설계하고, 분석 결과에 따라 CTA 배치와 정보 구조를 개선했습니다.',
+			// 성과 수치(구매 전환율 등)를 싣지 않는다 — 결제·장바구니 개선은
+			// 수치 없이 «CTA 배치와 정보 구조 개선»으로 표현한다는 요구사항이다
+			outcomeLabel: '설계한 체계',
+			outcome: '행동 추적 표준',
+			outcomeNote: 'GTM · dataLayer',
+			href: projectUrl('misumi-maintenance'),
+		},
+		stack: 'RxJS · Twig · JavaScript · jQuery · PHP · GA4 · GTM',
+		blocks: [
+			{
+				heading: '담당 범위와 기술적 판단',
+				items: [
+					'사용자 행동 분석을 바탕으로 결제·장바구니의 CTA 배치와 정보 구조를 개선했습니다.',
+					'GTM과 dataLayer 표준을 설계하고, 사용자 행동 추적 및 개인화 추천 솔루션을 연동했습니다.',
+				],
+			},
+		],
+	},
+];
+
+export const otherProjects: readonly ProjectEntry[] = [
+	{
+		ordinal: '05',
+		title: '삼성물산 연돌 상태 모니터링 시스템 · SEMS',
+		meta: '2026.01 — 2026.03 · 프론트엔드 1명 / 전체 5명',
+		stack: 'React · TypeScript · Vite · TanStack Query · Zustand · ECharts',
+		blocks: [
+			{
+				items: [
+					'ECharts 인스턴스 재사용과 **LTTB 다운샘플링**으로 대용량 시계열 데이터 렌더링 부담을 줄였습니다.',
+					'서버 상태와 UI 상태를 분리하고, MSW 기반 Mock 환경을 구축해 API 구현 전에도 화면 개발을 진행했습니다.',
+				],
+			},
+		],
+	},
+	{
+		ordinal: '06',
+		title: 'JH Solution 기업 홈페이지 리뉴얼',
+		meta: '2026.01 — 2026.03 · 프론트엔드 1명 / 전체 3명',
+		stack: 'Gatsby · React · CSS Modules · GraphQL · AWS S3 · CloudFront',
+		blocks: [
+			{
+				items: [
+					'Gatsby 기반 정적 사이트와 마크다운 콘텐츠 관리 흐름을 구축하고, Google Forms API로 문의 기능을 연동했습니다.',
+				],
+			},
+		],
+	},
+	{
+		ordinal: '07',
+		title: '내담씨앤씨 홈페이지 리뉴얼',
+		meta: '2022.12 — 2023.03 · 전체 3명',
+		blocks: [
+			{
+				items: [
+					'Java / Spring Boot 기반 기업 사이트의 UI·UX 기획, 반응형 화면, 국·영문 전환과 관리자 기능을 개발했습니다.',
+				],
+			},
+		],
+	},
+	{
+		ordinal: '08',
+		title: '한화생명 코어 시스템 구축',
+		meta: '2022.05 — 2022.12 · 전체 2명',
+		blocks: [
+			{
+				items: [
+					'Java / JavaScript / KendoUI 환경에서 보험 수수료 확인·계산 업무 화면을 개발하고, 정책 변경에 따른 유지보수를 수행했습니다.',
+				],
+			},
+		],
+	},
+];

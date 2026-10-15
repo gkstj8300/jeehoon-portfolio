@@ -1,29 +1,23 @@
-import { Ui } from '@jeehoon/ui';
-import styles from './Skill.module.scss';
-import SkillItem from './SkillItem';
-import { skill } from './skill.data';
-
-const skillKeys = ['coreStack', 'stateManagement', 'styling', 'tools'] as const;
-
-export interface SkillProps {
-	title: string;
-	skills: string[];
-}
+import { Fragment } from 'react';
+import { skillGroups, skillSection } from './skill.data';
+import styles from '../ResumePage/ResumePage.module.scss';
 
 export default function Skill() {
-	const skills: SkillProps[] = skillKeys.map((key) => {
-		const { title, skills: list } = skill[key];
-		return { title, skills: [...list] };
-	});
-
 	return (
-		<section>
-			<Ui.Title title='사용하는 기술' />
-			<div className={styles.skill}>
-				{skills.map((item, index) => (
-					<SkillItem key={index} {...item} />
+		<div>
+			<span className={styles.eyebrow}>{skillSection.eyebrow}</span>
+			<h2 className={styles.sectionTitle} id="resume-skill-title">
+				{skillSection.title}
+			</h2>
+			<dl className={styles.skills}>
+				{skillGroups.map(group => (
+					<Fragment key={group.title}>
+						<dt>{group.title}</dt>
+						<dd>{group.items}</dd>
+					</Fragment>
 				))}
-			</div>
-		</section>
+			</dl>
+		</div>
 	);
 }
+Skill.displayName = 'Skill';
