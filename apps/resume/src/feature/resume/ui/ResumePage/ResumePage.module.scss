@@ -1,29 +1,693 @@
-.container {
-	display: flex;
-	flex-direction: column;
-	gap: 3rem;
+/* 시안(docs/baakhan-resume-market.html)의 구성을 기존 테마 토큰 위에 얹는다.
+   색은 packages/theme의 CSS 변수를 그대로 쓰고, 포인트색만 이 페이지에서 이름 붙인다. */
+.page {
+	/* --rs-muted · --rs-line 은 globals.scss가 테마별로 정의한다 */
+	--rs-ink: var(--foreground);
+	/* 브랜드 핑크 — 점·선·포커스 링과 큰 제목에만 쓴다. 작은 글자는 --rs-accent-text */
+	--rs-pink: #fa2454;
+	/* 흰 글자를 올릴 포인트 배경. 두 테마 공통 — #fa2454 위 흰 글자는 3.86:1이다 */
+	--rs-accent-strong: #d61c47;
+	/* 고정 헤더 높이. 바로가기 바가 헤더 아래에 멈추고 앵커도 이만큼 비켜선다.
+	   IndexNav가 실제 헤더를 재서 덮어쓴다 — 이 값은 JS가 돌기 전·꺼진 때의 기본값이다 */
+	--rs-header-h: 4rem;
+
+	max-width: 1136px;
 	margin: 0 auto;
-	padding: 3rem 1rem;
+	padding-bottom: 2rem;
+	color: var(--rs-ink);
+	line-height: 1.7;
+	word-break: keep-all;
+
+	/* `:where()`로 명시도를 낮춘다 — `.page a`(0,1,1)로 두면 `.indexActive`(0,1,0)가
+	   지정한 포인트색을 이 리셋이 덮어, 활성 표시가 hover일 때만 보였다 */
+	:where(a) {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	:where(a, button, summary):focus-visible {
+		outline: 2px solid var(--rs-pink);
+		outline-offset: 4px;
+	}
 }
 
-.breadcrumb {
-	margin: 0 auto;
+/* ── 공통 ───────────────────────────────────── */
+.eyebrow {
+	display: block;
+	color: var(--rs-muted);
+	font-size: 11px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
 }
 
-.pdf {
+.sectionTitle {
+	margin: 8px 0 0;
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 1.3;
+	letter-spacing: -0.6px;
+}
+
+.chapter {
+	padding: 56px 0;
+	border-bottom: 1px solid var(--rs-line);
+	/* 바로가기로 건너뛸 때 제목이 헤더 뒤로 숨지 않게 한다 */
+	scroll-margin-top: calc(var(--rs-header-h) + 3.5rem);
+}
+
+/* ── 히어로 ─────────────────────────────────── */
+.hero {
+	padding: 48px 0 36px;
+}
+
+.heroTop {
 	display: flex;
-	justify-content: center;
+	gap: 20px;
+	justify-content: space-between;
 	align-items: center;
-	min-width: 100px;
-	max-width: 100px;
-	padding: 5px;
-	background-color: var(--sub-background-color);
-	border-radius: 0.3rem;
-	cursor: pointer;
+}
+
+.status {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	color: var(--rs-muted);
+	font-size: 11px;
+}
+
+.dot {
+	width: 6px;
+	height: 6px;
+	background: var(--rs-pink);
+	border-radius: 50%;
+}
+
+.name {
+	margin: 22px 0 18px;
+	font-weight: 700;
+	font-size: 44px;
+	line-height: 1.4;
+	letter-spacing: -1.6px;
+}
+
+.nameEn {
+	margin-left: 18px;
+	color: var(--rs-muted);
+	font-weight: 400;
+	font-size: 14px;
+	letter-spacing: 0;
+}
+
+.positioning {
+	margin: 0 0 18px;
+	font-weight: 700;
+	font-size: 26px;
+	line-height: 1.6;
+	letter-spacing: -0.8px;
+}
+
+.positioningAccent {
+	color: var(--rs-pink);
+	font-style: normal;
+}
+
+.summary {
+	max-width: 780px;
+	margin: 0;
+	color: var(--rs-muted);
+	font-size: 15px;
+	line-height: 1.95;
+}
+
+.contactLinks {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px 24px;
+	margin-top: 26px;
+	font-size: 13px;
+
+	a:hover {
+		color: var(--rs-accent-text);
+		text-decoration: underline;
+		text-underline-offset: 4px;
+	}
+}
+
+/* ── 바로가기 바 ────────────────────────────── */
+.indexBar {
+	display: flex;
+	position: sticky;
+	top: var(--rs-header-h);
+	z-index: 5;
+	justify-content: space-between;
+	align-items: center;
+	padding: 18px 0;
+	background: var(--background);
+	border-top: 1px solid var(--rs-ink);
+	border-bottom: 1px solid var(--rs-line);
+
+	nav {
+		display: flex;
+		gap: 24px;
+	}
+
+	a {
+		font-size: 14px;
+		font-weight: 500;
+	}
+
+	a:hover {
+		color: var(--rs-accent-text);
+	}
+}
+
+.indexActive {
+	color: var(--rs-accent-text);
+}
+
+.indexHint {
+	color: var(--rs-muted);
+	font-size: 10px;
+	font-family: monospace;
+}
+
+/* ── 01 경력 ────────────────────────────────── */
+.career {
+	display: grid;
+	grid-template-columns: 240px 1fr;
+	gap: 48px;
+}
+
+.chapterIntro p {
+	max-width: 210px;
+	margin-top: 14px;
+	color: var(--rs-muted);
+	font-size: 14px;
+}
+
+.company {
+	position: relative;
+	margin: 0;
+	padding: 0 0 38px 24px;
+	border-left: 1px solid var(--rs-line);
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 9px;
+		left: -4px;
+		width: 7px;
+		height: 7px;
+		background: var(--rs-pink);
+		border-radius: 50%;
+	}
+
+	&:last-child {
+		padding-bottom: 0;
+	}
+
+	p {
+		margin: 12px 0 15px;
+		color: var(--rs-muted);
+		font-size: 14px;
+	}
+}
+
+.companyHead {
+	display: flex;
+	gap: 20px;
+	justify-content: space-between;
+
+	h3 {
+		margin: 0;
+		font-weight: 700;
+		font-size: 22px;
+		letter-spacing: -0.8px;
+	}
+}
+
+.companyMeta {
+	color: var(--rs-muted);
+	font-size: 13px;
+}
+
+.chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+
+	span {
+		padding: 3px 9px;
+		border: 1px solid var(--rs-line);
+		border-radius: 5px;
+		font-size: 12px;
+	}
+}
+
+/* ── 02 프로젝트 ────────────────────────────── */
+.sectionHead {
+	display: flex;
+	gap: 30px;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin-bottom: 34px;
+
+	p {
+		margin: 0;
+		color: var(--rs-muted);
+		font-size: 13px;
+	}
+}
+
+.groupLabel {
+	margin: 32px 0 18px;
+	font-weight: 700;
+	font-size: 14px;
+}
+
+.project {
+	border-top: 1px solid var(--rs-line);
+
+	&:last-child {
+		border-bottom: 1px solid var(--rs-line);
+	}
+
+	summary {
+		display: grid;
+		grid-template-columns: 40px 1fr 30px;
+		gap: 14px;
+		align-items: center;
+		padding: 24px 4px;
+		list-style: none;
+		cursor: pointer;
+	}
+
+	summary::-webkit-details-marker {
+		display: none;
+	}
+
+	summary:hover .projectName {
+		color: var(--rs-accent-text);
+	}
+}
+
+.ordinal {
+	color: var(--rs-muted);
+	font-size: 11px;
+	font-family: monospace;
+}
+
+.projectName {
+	display: block;
+	font-weight: 600;
+	font-size: 17px;
+	letter-spacing: -0.35px;
+}
+
+.projectMeta {
+	display: block;
+	margin-top: 4px;
+	color: var(--rs-muted);
+	font-size: 11px;
+}
+
+.plus {
+	color: var(--rs-muted);
+	font-size: 24px;
+	text-align: right;
+	transition: transform 0.2s;
+}
+
+.project[open] .plus {
+	color: var(--rs-pink);
+	transform: rotate(45deg);
+}
+
+.detail {
+	max-width: 850px;
+	padding: 0 48px 26px 58px;
+	color: var(--rs-muted);
+	font-size: 14px;
+
+	h3 {
+		margin: 18px 0 8px;
+		color: var(--rs-ink);
+		font-weight: 700;
+		font-size: 14px;
+	}
+
+	ul {
+		padding-left: 18px;
+	}
+
+	li {
+		margin: 10px 0;
+	}
+
+	strong {
+		color: var(--rs-ink);
+		font-weight: 600;
+	}
+}
+
+.stack {
+	margin: 0;
+	color: var(--rs-accent-text);
+	font-size: 12px;
+}
+
+.caseLink {
+	display: inline-block;
+	margin-top: 12px;
+	font-size: 13px;
+	text-decoration: underline;
+	text-underline-offset: 5px;
 
 	&:hover {
-		color: rgb(237 237 237);
-		background-color: var(--icon-link-background-color);
-		transition: 0.15s ease-in-out;
+		color: var(--rs-accent-text);
+	}
+}
+
+/* 대표 프로젝트 — 요약 줄에 문제·해결과 결과를 함께 편다 */
+.featured {
+	summary {
+		grid-template-columns: 32px minmax(0, 1fr) 172px 22px;
+		gap: 20px;
+		align-items: start;
+		padding: 30px 4px;
+	}
+
+	.ordinal {
+		padding-top: 5px;
+	}
+
+	.projectName {
+		font-size: 18px;
+		line-height: 1.6;
+	}
+
+	.plus {
+		padding-top: 3px;
+		line-height: 1.2;
+	}
+
+	.detail {
+		margin-left: 56px;
+		padding: 18px 24px 24px 0;
+		border-top: 1px solid var(--rs-line);
+	}
+}
+
+.caseTag {
+	display: block;
+	margin-bottom: 8px;
+	color: var(--rs-accent-text);
+	font-weight: 500;
+	font-size: 12px;
+}
+
+.caseContext {
+	display: grid;
+	gap: 9px;
+	margin-top: 20px;
+	color: var(--rs-muted);
+	font-size: 14px;
+	line-height: 1.85;
+
+	> span {
+		display: grid;
+		grid-template-columns: 30px minmax(0, 1fr);
+		gap: 12px;
+	}
+
+	b {
+		padding-top: 2px;
+		color: var(--rs-ink);
+		font-weight: 700;
+		font-size: 12px;
+	}
+}
+
+.caseOutcome {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin-top: 4px;
+	padding-left: 20px;
+	border-left: 2px solid var(--rs-pink);
+
+	strong {
+		color: var(--rs-ink);
+		font-weight: 700;
+		font-size: 21px;
+		line-height: 1.35;
+		letter-spacing: -0.8px;
+	}
+
+	small {
+		margin: 0;
+		color: var(--rs-muted);
+		font-size: 12px;
+	}
+}
+
+.outcomeLabel {
+	color: var(--rs-muted);
+	font-weight: 500;
+	font-size: 12px;
+}
+
+/* ── 03 기술 · 04 교육 ──────────────────────── */
+.foundation {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 80px;
+}
+
+.skills {
+	display: grid;
+	grid-template-columns: 110px 1fr;
+	gap: 16px;
+	margin: 30px 0 0;
+	font-size: 14px;
+
+	dt {
+		color: var(--rs-muted);
+	}
+
+	dd {
+		margin: 0;
+		line-height: 1.9;
+	}
+}
+
+.school {
+	display: flex;
+	flex-direction: column;
+	margin-top: 24px;
+	font-size: 14px;
+
+	strong {
+		font-weight: 600;
+		font-size: 16px;
+	}
+
+	p {
+		margin: 0;
+		color: var(--rs-muted);
+		font-size: 13px;
+	}
+}
+
+.schoolDates {
+	color: var(--rs-muted);
+	font-size: 13px;
+}
+
+/* ── 마무리 ─────────────────────────────────── */
+.closing {
+	padding: 48px 0 36px;
+}
+
+.closingTitle {
+	margin: 8px 0 20px;
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 1.5;
+	letter-spacing: -1px;
+}
+
+.closingAccent {
+	color: var(--rs-pink);
+	font-style: normal;
+}
+
+.email {
+	display: inline-block;
+	padding: 10px 16px;
+	/* 다크 테마의 --sub-background-color는 브랜드 핑크라 흰 글자가 3.86:1로 떨어진다.
+	   시안대로 글자를 어둡게 고정한다(라이트 15:1 · 다크 5.4:1) */
+	background: var(--sub-background-color);
+	border-radius: 5px;
+	color: #121212;
+	font-size: 16px;
+	overflow-wrap: anywhere;
+	transition: 0.15s ease-in-out;
+
+	&:hover {
+		background: var(--rs-accent-strong);
+		color: #fff;
+	}
+}
+
+.asOf {
+	margin-top: 40px;
+	padding-top: 20px;
+	border-top: 1px solid var(--rs-line);
+	color: var(--rs-muted);
+	font-size: 12px;
+}
+
+/* ── 좁은 화면 ──────────────────────────────── */
+@media (max-width: 768px) {
+	.page {
+		/* 공통 헤더가 좁은 화면에서 72px로 커진다 */
+		--rs-header-h: 4.5rem;
+	}
+
+	.hero {
+		padding: 32px 0 28px;
+	}
+
+	.name {
+		font-size: 36px;
+	}
+
+	.nameEn {
+		display: block;
+		margin: 8px 0 0;
+	}
+
+	.positioning {
+		font-size: 22px;
+	}
+
+	.summary {
+		font-size: 14px;
+	}
+
+	.contactLinks {
+		gap: 12px 20px;
+	}
+
+	.indexBar nav {
+		flex-wrap: wrap;
+		gap: 16px;
+	}
+
+	.indexBar a {
+		font-size: 13px;
+	}
+
+	.indexHint {
+		display: none;
+	}
+
+	.chapter {
+		padding: 40px 0;
+	}
+
+	.career,
+	.foundation {
+		grid-template-columns: 1fr;
+		gap: 28px;
+	}
+
+	.chapterIntro p {
+		max-width: 100%;
+	}
+
+	.sectionHead {
+		display: block;
+
+		p {
+			margin-top: 14px;
+		}
+	}
+
+	.companyHead {
+		display: block;
+	}
+
+	.project summary {
+		grid-template-columns: 24px 1fr 20px;
+		gap: 9px;
+	}
+
+	.projectName {
+		font-size: 15px;
+	}
+
+	.detail {
+		padding: 0 0 22px 33px;
+	}
+
+	.featured {
+		summary {
+			grid-template-columns: 24px minmax(0, 1fr) 20px;
+			gap: 12px;
+			padding: 24px 0;
+		}
+
+		.projectName {
+			font-size: 16px;
+		}
+
+		.plus {
+			grid-row: 1;
+			grid-column: 3;
+		}
+
+		.detail {
+			margin-left: 36px;
+			padding-right: 0;
+			font-size: 13px;
+		}
+	}
+
+	.caseOutcome {
+		grid-row: 2;
+		grid-column: 2;
+		gap: 4px;
+		margin-top: 10px;
+		padding-left: 14px;
+
+		strong {
+			font-size: 20px;
+		}
+	}
+
+	.caseContext {
+		gap: 10px;
+		margin-top: 16px;
+		font-size: 13px;
+
+		> span {
+			grid-template-columns: 26px minmax(0, 1fr);
+			gap: 8px;
+		}
+	}
+
+	.skills {
+		grid-template-columns: 95px 1fr;
+	}
+}
+
+/* 모션을 줄이라고 했으면 멈춘다 — 이 페이지의 움직임은 전환뿐이다 */
+@media (prefers-reduced-motion: reduce) {
+	.page *,
+	.page *::before {
+		transition: none !important;
+		animation: none !important;
 	}
 }

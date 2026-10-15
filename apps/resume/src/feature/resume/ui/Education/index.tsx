@@ -1,34 +1,23 @@
-import { Ui } from '@jeehoon/ui';
-import styles from './Education.module.scss';
-import EducationItem from './EducationItem';
-import { education } from './education.data';
-
-const educationKeys = ['university2', 'education', 'university1', 'highSchool'] as const;
-type EducationKey = typeof educationKeys[number];
-
-export interface EducationProps {
-  name: string;
-  major: string;
-  durationStart: string;
-  durationEnd: string;
-}
+import { educationSection, schools } from './education.data';
+import styles from '../ResumePage/ResumePage.module.scss';
 
 export default function Education() {
-	const educationKeys: Array<EducationKey> = ['university2', 'education', 'university1', 'highSchool'];
-
-	const educations: EducationProps[] = educationKeys.map((key) => {
-		const { name, major, durationStart, durationEnd } = education[key];
-		return { name, major, durationStart, durationEnd };
-	});
-
 	return (
-		<section>
-			<Ui.Title title='교육' />
-			<div className={styles.education}>
-				{educations.map((item, index) => (
-					<EducationItem key={index} {...item} />
-				))}
-			</div>
-		</section>
+		<div>
+			<span className={styles.eyebrow}>{educationSection.eyebrow}</span>
+			<h2 className={styles.sectionTitle} id="resume-education-title">
+				{educationSection.title}
+			</h2>
+			{schools.map(school => (
+				<div className={styles.school} key={school.name}>
+					<div className={styles.schoolDates}>{school.period}</div>
+					<div>
+						<strong>{school.name}</strong>
+						<p>{school.major}</p>
+					</div>
+				</div>
+			))}
+		</div>
 	);
 }
+Education.displayName = 'Education';
