@@ -7,6 +7,7 @@ import { misumiRenewal } from './misumi-renewal';
 import { misumiMaintenance } from './misumi-maintenance';
 import { naedamHomepage } from './naedam-homepage';
 import { hanwhaCore } from './hanwha-core';
+import { zipboda } from './zipboda';
 
 const all: ProjectDetail[] = [
 	smbEmission,
@@ -17,6 +18,8 @@ const all: ProjectDetail[] = [
 	misumiMaintenance,
 	naedamHomepage,
 	hanwhaCore,
+	// 개인 프로젝트는 업무 프로젝트 뒤에 둔다 — «다음 프로젝트» 순환도 업무를 다 본 뒤에 온다
+	zipboda,
 ];
 
 export const projectDetails: Record<string, ProjectDetail> = Object.fromEntries(

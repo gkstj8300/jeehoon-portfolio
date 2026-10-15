@@ -79,6 +79,11 @@ export interface ComparisonBlock {
 	groups: ComparisonGroup[];
 }
 
+export interface HeroLink {
+	label: string;
+	href: string;
+}
+
 export interface DetailHero {
 	titlePre?: string;
 	titleAccent: string;
@@ -86,6 +91,11 @@ export interface DetailHero {
 	summaryHtml: string;
 	thumbnail?: ImageRef;
 	meta: MetaItem[];
+	/**
+	 * 히어로 아래에 두는 바깥 링크. 배포 주소가 없는 개인 프로젝트처럼 저장소가 곧 근거인
+	 * 경우에 쓴다. 지정하지 않은 프로젝트의 화면은 바뀌지 않는다.
+	 */
+	links?: HeroLink[];
 }
 
 export interface ProjectDetail {

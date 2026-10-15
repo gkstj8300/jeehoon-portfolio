@@ -5,6 +5,8 @@ import styles from './ProjectCard.module.scss';
 
 interface ProjectCardProps {
 	project: Project;
+	/** wide: 넓은 화면에서 썸네일과 본문을 가로로 놓는다 — 한 장만 서는 개인 프로젝트 섹션용 */
+	layout?: 'default' | 'wide';
 }
 
 function formatDuration(start: string, end: string) {
@@ -16,13 +18,16 @@ function formatDuration(start: string, end: string) {
 	return `${fmt(start)} ~ ${fmt(end)}`;
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({ project, layout = 'default' }: ProjectCardProps) {
+	const isPersonal = project.kind === 'personal';
+
 	return (
 		<Link
 			href={`/projects/${project.slug}/`}
-			className={styles.card}
-			aria-label={`${project.title} 자세히 보기`}
+			className={`${styles.card} ${layout === 'wide' ? styles.wide : ''}`.trim()}
+			aria-label={`${isPersonal ? '개인 프로젝트 · ' : ''}${project.title} 자세히 보기`}
 			data-category={project.category}
+			data-kind={project.kind}
 		>
 			<div className={styles.thumb}>
 				{project.thumbnail ? (
@@ -38,6 +43,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 						<span className={styles.thumbCompany}>{project.categoryLabel}</span>
 					</div>
 				)}
+				{/* 회사 결과물로 읽히지 않도록 썸네일 위에 성격을 먼저 밝힌다 */}
+				{isPersonal ? (
+					<span className={styles.kindBadge}>{project.categoryLabel}</span>
+				) : null}
 				<div className={styles.overlay}>
 					<span className={styles.viewBtn}>자세히 보기 →</span>
 				</div>
