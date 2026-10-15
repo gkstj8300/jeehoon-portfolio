@@ -1,0 +1,18 @@
+/* 업무 프로젝트 섹션과 같은 폭·여백을 쓰되, 경계선으로 다른 묶음임을 드러낸다 */
+.section {
+	width: 100%;
+	padding: 6rem 0;
+	background: var(--pf-bg);
+	border-top: 1px solid var(--pf-border);
+}
+
+.inner {
+	max-width: var(--pf-max-w);
+	margin: 0 auto;
+	padding: 0 1.5rem;
+}
+
+.list {
+	display: grid;
+	gap: 1.5rem;
+}

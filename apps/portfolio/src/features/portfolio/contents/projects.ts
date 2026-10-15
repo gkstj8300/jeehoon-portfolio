@@ -3,7 +3,15 @@ export type ProjectCategory =
 	| 'jh'
 	| 'misumi'
 	| 'naedam'
-	| 'hanwha';
+	| 'hanwha'
+	| 'personal';
+
+/**
+ * 프로젝트의 성격. **회사(고객사) 업무와 개인 프로젝트는 평가 축이 달라 섞지 않는다.**
+ * 업무는 팀 안의 역할·비즈니스 성과로, 개인은 0→1 전 과정의 소유와 기술적 선택으로 읽힌다.
+ * 목록·카드·상세가 모두 이 값으로 갈린다.
+ */
+export type ProjectKind = 'work' | 'personal';
 
 export interface ProjectLink {
 	label: string;
@@ -12,6 +20,7 @@ export interface ProjectLink {
 
 export interface Project {
 	slug: string;
+	kind: ProjectKind;
 	category: ProjectCategory;
 	categoryLabel: string;
 	company: string;
@@ -25,6 +34,7 @@ export interface Project {
 	thumbnail?: string;
 }
 
+/** 회사별 필터 — 업무 프로젝트에만 쓴다. 개인 프로젝트는 별도 섹션이라 여기 없다 */
 export const categoryFilters = [
 	{ id: 'all', label: '전체' },
 	{ id: 'samsung', label: '삼성물산' },
@@ -37,6 +47,7 @@ export const categoryFilters = [
 export const projects: readonly Project[] = [
 	{
 		slug: 'smb-emission',
+		kind: 'work',
 		category: 'jh',
 		categoryLabel: 'JH Solution',
 		company: '제이에이치솔루션',
@@ -58,6 +69,7 @@ export const projects: readonly Project[] = [
 	},
 	{
 		slug: 'bees',
+		kind: 'work',
 		category: 'samsung',
 		categoryLabel: '삼성물산',
 		company: '삼성물산',
@@ -78,6 +90,7 @@ export const projects: readonly Project[] = [
 	},
 	{
 		slug: 'sems',
+		kind: 'work',
 		category: 'samsung',
 		categoryLabel: '삼성물산',
 		company: '삼성물산',
@@ -98,6 +111,7 @@ export const projects: readonly Project[] = [
 	},
 	{
 		slug: 'jh-solution',
+		kind: 'work',
 		category: 'jh',
 		categoryLabel: 'JH Solution',
 		company: 'JH Solution',
@@ -117,6 +131,7 @@ export const projects: readonly Project[] = [
 	},
 	{
 		slug: 'misumi-renewal',
+		kind: 'work',
 		category: 'misumi',
 		categoryLabel: '한국미스미',
 		company: '한국미스미',
@@ -142,6 +157,7 @@ export const projects: readonly Project[] = [
 	},
 	{
 		slug: 'misumi-maintenance',
+		kind: 'work',
 		category: 'misumi',
 		categoryLabel: '한국미스미',
 		company: '한국미스미',
@@ -162,6 +178,7 @@ export const projects: readonly Project[] = [
 	},
 	{
 		slug: 'naedam-homepage',
+		kind: 'work',
 		category: 'naedam',
 		categoryLabel: '내담씨앤씨',
 		company: '내담씨앤씨',
@@ -186,6 +203,7 @@ export const projects: readonly Project[] = [
 	},
 	{
 		slug: 'hanwha-core',
+		kind: 'work',
 		category: 'hanwha',
 		categoryLabel: '한화생명',
 		company: '한화생명',
@@ -203,4 +221,35 @@ export const projects: readonly Project[] = [
 			'데이터 마이그레이션 검증 협업 — Core 시스템과 레거시 청산 과정',
 		],
 	},
+	{
+		slug: 'zipboda',
+		kind: 'personal',
+		category: 'personal',
+		categoryLabel: '개인 프로젝트',
+		company: '개인 프로젝트 · 1인 개발',
+		title: '집보다 — 공공 청약 · 3D 집구경 주거 플랫폼',
+		summary:
+			'LH·SH 현황도를 3D로 옮겨 1인칭으로 둘러보는 주거 플랫폼 — 기획부터 디자인 시스템·웹까지 AI 코딩 에이전트와 1인 개발',
+		durationStart: '2026-07',
+		durationEnd: '진행중',
+		thumbnail: '/images/projects/zipboda/walkthrough.webp',
+		tags: ['Next.js', 'TypeScript', 'Three.js', 'React Three Fiber', 'OpenCV.js', 'Tailwind CSS', 'Vitest', 'Claude Code', 'Codex'],
+		highlights: [
+			'요구사항·화면·API 정의서부터 디자인 시스템 패키지 3종과 웹 21개 화면까지 기획·설계·개발 전 과정을 1인 수행',
+			'LH·SH 현황도 PDF → 2D 평면 모델 → Three.js 3D 집구경(1·3인칭) 파이프라인 구축 — 9개 주택 66개 평형 카탈로그',
+			'OpenCV 자동 추출 초안이 승격 기준을 통과하지 못하자 인쇄 치수선 실측 트레이싱으로 전환 — 검수 통과 20개 평형만 3D 노출',
+			'Claude Code·Codex가 같은 규칙(AGENTS.md → 상황별 규칙 11종)을 읽도록 구성하고 작업 난도별 모델 선택 기준을 문서화',
+			'테스트 파일 120개로 3D 노출 정책·1인칭 이동 규칙 등 회귀를 고정',
+		],
+		links: [
+			{ label: 'GitHub · ZIPBODA', href: 'https://github.com/ZIPBODA' },
+			{ label: 'zipboda-web 저장소', href: 'https://github.com/ZIPBODA/zipboda-web' },
+		],
+	},
 ];
+
+/** 회사·고객사 업무로 수행한 프로젝트 — 회사별 필터가 걸리는 목록 */
+export const workProjects = projects.filter(p => p.kind === 'work');
+
+/** 회사 밖에서 혼자 진행한 프로젝트 — 업무 목록과 섞지 않고 별도 섹션에 둔다 */
+export const personalProjects = projects.filter(p => p.kind === 'personal');

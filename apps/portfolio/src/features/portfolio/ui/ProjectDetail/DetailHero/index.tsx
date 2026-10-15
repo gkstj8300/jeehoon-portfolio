@@ -35,6 +35,22 @@ export default function DetailHero({ hero }: DetailHeroProps) {
 							</div>
 						))}
 					</dl>
+					{hero.links && hero.links.length > 0 ? (
+						<div className={styles.links}>
+							{hero.links.map(link => (
+								<a
+									key={link.href}
+									className={styles.link}
+									href={link.href}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									{link.label}
+									<span aria-hidden="true">↗</span>
+								</a>
+							))}
+						</div>
+					) : null}
 				</div>
 				{hero.thumbnail ? (
 					<div className={styles.visual}>

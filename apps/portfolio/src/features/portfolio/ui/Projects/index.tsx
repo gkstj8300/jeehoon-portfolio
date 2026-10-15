@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { categoryFilters, projects } from '@/features/portfolio/contents';
+import { categoryFilters, workProjects } from '@/features/portfolio/contents';
 import SectionHeader from '@/features/portfolio/ui/common/SectionHeader';
 import Reveal from '@/features/portfolio/ui/common/Reveal';
 import ProjectCard from './ProjectCard';
@@ -13,8 +13,9 @@ export default function Projects() {
 	const [filter, setFilter] = useState<FilterId>('all');
 
 	const filtered = useMemo(() => {
-		if (filter === 'all') return projects;
-		return projects.filter(p => p.category === filter);
+		// 회사 필터는 업무 프로젝트에만 건다 — 개인 프로젝트는 SideProjects 섹션이 따로 보여 준다
+		if (filter === 'all') return workProjects;
+		return workProjects.filter(p => p.category === filter);
 	}, [filter]);
 
 	return (
@@ -22,9 +23,9 @@ export default function Projects() {
 			<div className={styles.inner}>
 				<Reveal>
 					<SectionHeader
-						label="Projects"
-						title="프로젝트"
-						desc={'기획·구조 설계부터 구현·운영까지 직접 수행한 프로젝트들입니다.\n회사별로 필터링해 살펴볼 수 있습니다.'}
+						label="Work"
+						title="업무 프로젝트"
+						desc={'회사와 고객사 업무로 기획·설계부터 구현·운영까지 수행한 프로젝트입니다.\n회사별로 필터링해 살펴볼 수 있습니다.'}
 					/>
 				</Reveal>
 
