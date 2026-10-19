@@ -56,7 +56,11 @@
 	color: white;
 }
 
-.light {
+/*
+ * 손잡이 위치·색과 아이콘은 React 상태가 아니라 <html data-theme>를 따른다.
+ * 서버가 그린 직후(하이드레이션 전)에도 실제 테마와 같은 모양이고, 로딩 중 손잡이가 미끄러지지 않는다.
+ */
+:global(html[data-theme='light']) .toggle {
 	.track {
 		background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.14));
 	}
@@ -67,7 +71,7 @@
 	}
 }
 
-.dark {
+:global(html[data-theme='dark']) .toggle {
 	.track {
 		background: linear-gradient(180deg, rgba(6, 10, 18, 0.36), rgba(8, 12, 22, 0.46));
 	}
@@ -93,5 +97,19 @@
 		height: 1.9rem;
 		--handle: 1.6rem;
 		--gap: 0.4rem;
+	}
+}
+
+.moonIcon {
+	display: none;
+}
+
+:global(html[data-theme='dark']) .toggle {
+	.moonIcon {
+		display: block;
+	}
+
+	.sunIcon {
+		display: none;
 	}
 }

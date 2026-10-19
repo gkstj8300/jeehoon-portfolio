@@ -134,9 +134,3 @@ p {
 pre, code, input {
 	font-family: var(--font-preten-dard), monospace !important;
 }
-
-@media (prefers-color-scheme: dark) {
-	html {
-		color-scheme: dark;
-	}
-}

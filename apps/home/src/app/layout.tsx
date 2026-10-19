@@ -1,5 +1,6 @@
 import "@jeehoon/theme";
 import { Infra, pretendard } from '@jeehoon/ui';
+import { FALLBACK_THEME, THEME_COOKIE_NAME, parseTheme } from '@jeehoon/utils';
 import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 import StandardLayout from '@/shared/layouts/StandardLayout';
@@ -24,11 +25,14 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	const gaId = process.env.GTM_ID;
-	const themeCookie = cookies().get('theme')?.value;
-  const theme = themeCookie === 'dark' || themeCookie === 'light' ? themeCookie : 'light';
+	// 저장된 테마가 없으면 기본값으로 그리고, <head>의 ThemeScript가 그리기 전에 OS 설정으로 바로잡는다
+	const theme = parseTheme(cookies().get(THEME_COOKIE_NAME)?.value) ?? FALLBACK_THEME;
 
 	return (
 		<html lang="ko" data-theme={theme} suppressHydrationWarning>
+			<head>
+				<Infra.ThemeScript />
+			</head>
 			<body className={pretendard.variable}>
         <StandardLayout>{children}</StandardLayout>
 				{gaId ? <Infra.GoogleAnalytics gaId={gaId} /> : null}

@@ -7,6 +7,7 @@ import Notice from './components/Notice';
 import MiniTitle from './components/MiniTitle';
 import ContextProviders from './components/Provider/ContextProviders';
 import Reveal from './components/Reveal';
+import ThemeScript from './components/ThemeScript';
 import Title from './components/Title';
 import { TooltipController } from './components/Tooltip';
 import { useTooltip } from './components/Tooltip/Tooltip.hooks';
@@ -21,7 +22,7 @@ export const Ui = { TooltipController, Reveal, Title, MiniTitle };
 export const Providers = { ContextProviders };
 
 // Infra
-export const Infra = { GoogleAnalytics };
+export const Infra = { GoogleAnalytics, ThemeScript };
 
 // Icons
 export { Icons } from './icons';
