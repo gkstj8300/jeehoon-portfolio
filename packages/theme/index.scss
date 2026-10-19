@@ -3,6 +3,8 @@
 @use './variables';
 
 html[data-theme='dark'] {
+	/* 스크롤바·입력창 등 브라우저 기본 UI도 OS 설정이 아니라 고른 테마를 따른다 */
+	color-scheme: dark;
 	--background: #{dark.$backgroundColor};
 	--sub-background-color: #{dark.$subBackgroundColor};
 	--foreground: #{dark.$fontColor};
@@ -29,6 +31,7 @@ html[data-theme='dark'] {
 }
 
 html[data-theme='light'] {
+	color-scheme: light;
 	--background: #{light.$backgroundColor};
 	--sub-background-color: #{light.$subBackgroundColor};
 	--foreground: #{light.$fontColor};
