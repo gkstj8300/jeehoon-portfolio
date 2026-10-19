@@ -1,5 +1,5 @@
 import { sendEvent } from './sendEvent';
-import { PostType } from '@/shared/types/slug';
+import { PostSummary } from '@/shared/types/slug';
 
 type SelectedPost = {
 	event: 'SelectPost';
@@ -10,7 +10,7 @@ type SelectedPost = {
 	ga_post_mainTag: string;
 };
 
-export const selectPost = (post: PostType, layout: string) => {
+export const selectPost = (post: PostSummary, layout: string) => {
 	const { title, regDate, mainTag } = post;
 
 	sendEvent<SelectedPost>({

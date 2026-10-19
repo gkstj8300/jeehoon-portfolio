@@ -1,3 +1,25 @@
+.sideWrap {
+	padding: 2rem 1rem;
+}
+
+.asideButton {
+	z-index: 4;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: 40px;
+	background-color: var(--sub-background-color);
+	border-radius: 0 0 0 1.3rem;
+	cursor: pointer;
+	user-select: none;
+}
+
+.sideMenuIcon {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
 .tableOfContents {
 	position: sticky;
 	top: 60px;
@@ -69,6 +91,22 @@
 }
 
 @media (max-width: 992px) {
+	.sideWrap {
+		position: fixed;
+		right: 0;
+		display: flex;
+		padding: 0;
+
+		/* 헤더 높이를 재기 전(하이드레이션 전)에는 위치가 정해지지 않아 감춘다 */
+		&[data-measured='false'] {
+			visibility: hidden;
+		}
+	}
+
+	.asideButton {
+		display: flex;
+	}
+
 	.tableOfContents {
 		z-index: 6;
 		display: none;

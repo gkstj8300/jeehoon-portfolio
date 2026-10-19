@@ -1,12 +1,12 @@
 import { Icons } from '@jeehoon/ui';
 import { ChangeEvent, useState, useCallback, useMemo, useEffect } from 'react';
 import styles from './PostSearch.module.scss';
-import { PostType } from '@/shared/types/slug';
+import { PostSummary } from '@/shared/types/slug';
 import TagLink from '@/shared/ui/TagLink';
 
 interface PostSearchProps {
-	postList: PostType[];
-	filterPosts: (posts: PostType[]) => void;
+	postList: PostSummary[];
+	filterPosts: (posts: PostSummary[]) => void;
 }
 
 interface SearchType {

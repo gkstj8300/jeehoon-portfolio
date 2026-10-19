@@ -1,12 +1,10 @@
 import { useEffect, useRef } from 'react';
-import { useSelector } from '@/shared/lib/store/hooks';
-import { selectTheme } from '@/shared/lib/store/modules/common/selectors';
+
+/** 블로그 테마 상태가 항상 dark로 고정돼 있어 댓글도 지금까지 github-dark로 그려졌다. 같은 모양을 유지한다 */
+const UTTERANCES_THEME = 'github-dark';
 
 export default function PostComents() {
-	const theme = useSelector(selectTheme);
 	const ref = useRef<HTMLDivElement>(null);
-
-	const utterancesTheme = theme === 'dark' ? 'github-dark' : 'github-light';
 
 	useEffect(() => {
 		if (!ref.current) {
@@ -26,22 +24,10 @@ export default function PostComents() {
 		scriptElem.setAttribute('repo', 'gkstj8300/blog-comments');
 		scriptElem.setAttribute('issue-term', 'pathname');
 		scriptElem.setAttribute('label', '댓글');
-		scriptElem.setAttribute('theme', utterancesTheme);
+		scriptElem.setAttribute('theme', UTTERANCES_THEME);
 
 		ref.current.appendChild(scriptElem);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
-
-	useEffect(() => {
-		const iframe =
-			document.querySelector<HTMLIFrameElement>('.utterances-frame');
-		if (iframe?.contentWindow) {
-			iframe.contentWindow.postMessage(
-				{ type: 'set-theme', theme: utterancesTheme },
-				'https://utteranc.es'
-			);
-		}
-	}, [utterancesTheme]);
 
 	return <section ref={ref} />;
 }

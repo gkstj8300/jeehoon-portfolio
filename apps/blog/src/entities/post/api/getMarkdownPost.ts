@@ -1,36 +1,18 @@
-import fs from 'fs/promises';
-import path from 'path';
-import matter from 'gray-matter';
-import convertToSlug from '../utils/convertToSlug';
+import { getPostsInFolderOrder } from './getMarkdownAllPosts';
 import { PostType } from '@/shared/types/slug';
 
-const postsDirectory = path.join(process.cwd(), 'src/content/posts');
-
+/**
+ * 파일을 하나씩 다시 읽지 않고, 파싱해 둔 목록에서 슬러그로 찾는다.
+ * 같은 슬러그가 여럿이면 지금까지처럼 폴더 순서에서 먼저 나오는 글을 고른다.
+ */
 const getMarkdownPost = async (slug: string): Promise<PostType> => {
-	const fileNames = await fs.readdir(postsDirectory);
 	const decodingSlug = decodeURIComponent(slug);
+	const post = getPostsInFolderOrder().find(({ slug: postSlug }) => postSlug === decodingSlug);
 
-	for (const fileName of fileNames) {
-		const filePath = path.join(postsDirectory, fileName);
-		const fileContents = await fs.readFile(filePath, 'utf8');
-		const { data, content } = matter(fileContents);
-		const convertSlug = convertToSlug(data.title);
-
-		if (convertSlug === decodingSlug) {
-			return {
-				slug: convertSlug,
-				title: data.title,
-				description: data.description,
-				thumbnailImage: data.thumbnailImage,
-				mainTag: data.mainTag,
-				regDate: data.regDate,
-				tags: data.tags,
-				content,
-			};
-		}
+	if (!post) {
+		throw new Error('게시글을 찾지 못했습니다.');
 	}
-
-	throw new Error('게시글을 찾지 못했습니다.');
+	return post;
 };
 
 export default getMarkdownPost;

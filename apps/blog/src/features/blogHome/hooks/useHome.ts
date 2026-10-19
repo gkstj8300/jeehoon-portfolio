@@ -1,53 +1,42 @@
-import { useState, useCallback, useEffect, useMemo } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { SearchType } from '../types/Home.types';
-import { PostType } from '@/shared/types/slug';
+import { PostSummary } from '@/shared/types/slug';
 
-export function useHome(postList: PostType[]) {
-  const [posts, setPosts] = useState<PostType[]>(postList);
-  const [search, setSearch] = useState<SearchType>({ tag: '' });
+const RECENT_POST_COUNT = 5;
 
-  const recentPosts = useMemo(
-    () =>
-      postList
-        .sort(
-          (a, b) =>
-            new Date(b.regDate).getTime() - new Date(a.regDate).getTime()
-        )
-        .slice(0, 5),
-    [postList]
-  );
+/** postList는 서버에서 최신 글 순으로 정렬해 넘긴다 */
+export function useHome(postList: PostSummary[]) {
+	const [search, setSearch] = useState<SearchType>({ tag: '' });
 
-  const handleFindPosts = useCallback((search: SearchType) => {
-    setSearch(prev => ({
-      ...prev,
-      ...search,
-    }));
-  }, []);
+	const recentPosts = useMemo(() => postList.slice(0, RECENT_POST_COUNT), [postList]);
 
-  useEffect(() => {
-    let filteredPosts = [...postList];
+	const handleFindPosts = useCallback((search: SearchType) => {
+		setSearch(prev => ({
+			...prev,
+			...search,
+		}));
+	}, []);
 
-    if (!search) {
-      return;
-    }
+	// 검색 결과는 상태로 따로 들고 있지 않고 렌더링 중에 계산한다(이펙트 뒤 한 번 더 그리지 않도록)
+	const posts = useMemo(() => {
+		let filteredPosts = postList;
 
-    if (search.keyword) {
-      filteredPosts = filteredPosts.filter(post =>
-        post.title.toLowerCase().includes(search.keyword!.toLowerCase())
-      );
-    }
+		if (search.keyword) {
+			const keyword = search.keyword.toLowerCase();
+			filteredPosts = filteredPosts.filter(post => post.title.toLowerCase().includes(keyword));
+		}
 
-    if (search.tag) {
-      filteredPosts = filteredPosts.filter(post => post.mainTag === search.tag);
-    }
+		if (search.tag) {
+			filteredPosts = filteredPosts.filter(post => post.mainTag === search.tag);
+		}
 
-    setPosts(filteredPosts);
-  }, [search, postList]);
+		return filteredPosts;
+	}, [search, postList]);
 
-  return {
-    posts,
-    search,
-    recentPosts,
-    handleFindPosts,
-  };
+	return {
+		posts,
+		search,
+		recentPosts,
+		handleFindPosts,
+	};
 }
