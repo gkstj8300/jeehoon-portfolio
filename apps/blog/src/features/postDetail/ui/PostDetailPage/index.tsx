@@ -1,28 +1,12 @@
-'use client';
-
-import { useOnMounted } from '@jeehoon/hooks';
-import { Icons } from '@jeehoon/ui';
-import { getHeight } from '@jeehoon/utils';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { useState, useRef } from 'react';
+import PostComentsLazy from '../PostComentsLazy';
+import PostDetailPageView from '../PostDetailPageView';
 import TableOfContents from '../TableOfContents';
 import styles from './PostDetailPage.module.scss';
 import PostContent from '@/entities/post/ui/PostContent';
 import PostInfo from '@/entities/post/ui/PostInfo';
 import PostTitle from '@/entities/post/ui/PostTitle';
-import { Heading } from '@/features/postDetail/types';
-import { ga } from '@/shared/lib/logs/analytics';
-
-const HEADER_WRAPPER_ID = 'header-wrapper';
-
-const PostComents = dynamic(
-	() => import('@/features/postDetail/ui/PostComents'),
-	{
-		ssr: false,
-		loading: () => <div style={{ minHeight: '200px' }} />,
-	}
-);
+import { getPostContentHeadings } from '@/features/postDetail/utils/getPostContentHeadings';
 
 interface PostDetailProps {
 	title: string;
@@ -33,6 +17,10 @@ interface PostDetailProps {
 	content: string;
 }
 
+/**
+ * 게시글 상세. 본문과 목차는 서버에서 그려 첫 HTML에 실리고,
+ * 목차 상호작용·댓글·조회 기록만 클라이언트 컴포넌트로 둔다.
+ */
 export default function PostDetailPage({
 	title,
 	thumbnailImage,
@@ -41,28 +29,7 @@ export default function PostDetailPage({
 	tags,
 	content,
 }: PostDetailProps) {
-	const [headings, setHeadings] = useState<Heading[]>();
-	const [isAside, setIsAside] = useState<boolean>(false);
-
-	const tableListRef = useRef<HTMLDivElement>(null);
-
-	const headerHeight = getHeight(`#${HEADER_WRAPPER_ID}`) ?? 0;
-
-	const handleGetHeadigs = (headings: Heading[]) => {
-		setHeadings(headings);
-	};
-
-	const handleClickAsideOpen = () => {
-		setIsAside(prev => !prev);
-	};
-
-	useOnMounted(() => {
-		ga.pageView.postDetail({
-			title,
-			regDate,
-			mainTag,
-		});
-	});
+	const headings = getPostContentHeadings(content);
 
 	return (
 		<div className={styles.container}>
@@ -80,30 +47,11 @@ export default function PostDetailPage({
 				)}
 				<PostTitle title={title} />
 				<PostInfo tags={tags} />
-				<PostContent
-					ref={tableListRef}
-					content={content}
-					handleGetHeadigs={handleGetHeadigs}
-				/>
-				<PostComents />
+				<PostContent content={content} />
+				<PostComentsLazy />
 			</div>
-			{headings && headings.length > 0 && (
-				<div
-					className={styles.sideWrap}
-					style={{
-						top: headerHeight + 4,
-					}}
-				>
-					<div className={styles.asideButton} onClick={handleClickAsideOpen}>
-						<Icons.RiMenu4Fill className={styles.sideMenuIcon} />
-					</div>
-					<TableOfContents
-						headings={headings}
-						tableListRef={tableListRef}
-						isAside={isAside}
-					/>
-				</div>
-			)}
+			{headings.length > 0 && <TableOfContents headings={headings} />}
+			<PostDetailPageView title={title} regDate={regDate} mainTag={mainTag} />
 		</div>
 	);
 }

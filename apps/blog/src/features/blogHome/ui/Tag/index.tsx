@@ -1,19 +1,27 @@
 import { Ui } from '@jeehoon/ui';
-import { useState, useEffect, useCallback, MouseEvent } from 'react';
+import { useCallback, useMemo, MouseEvent } from 'react';
 import styles from './Tag.module.scss';
 import { SearchType } from '@/features/blogHome/types';
-import { PostType } from '@/shared/types/slug';
+import { PostSummary } from '@/shared/types/slug';
 import TagLink from '@/shared/ui/TagLink';
 
 interface TagProps {
-	postList: PostType[];
+	postList: PostSummary[];
 	search?: SearchType;
 	handleFindPosts: (search: SearchType) => void;
 }
 
 export default function Tag({ postList, search, handleFindPosts }: TagProps) {
-	const [tags, setTags] = useState<string[]>();
-	const [tagCounts, setTagCounts] = useState<Record<string, number>>();
+	// 태그 목록은 서버 렌더링 단계에서 바로 그려지도록 이펙트 대신 렌더링 중에 계산한다
+	const { tags, tagCounts } = useMemo(() => {
+		const allTags = postList.flatMap(post => post.mainTag);
+		const counts = allTags.reduce((acc: Record<string, number>, tag: string) => {
+			acc[tag] = (acc[tag] || 0) + 1;
+			return acc;
+		}, {});
+
+		return { tags: [...new Set(allTags)], tagCounts: counts };
+	}, [postList]);
 
 	const handleClickFindPost = useCallback(
 		(e: MouseEvent, tag: string) => {
@@ -26,20 +34,6 @@ export default function Tag({ postList, search, handleFindPosts }: TagProps) {
 		},
 		[search, handleFindPosts]
 	);
-
-	useEffect(() => {
-		const allTags = postList.flatMap(post => post.mainTag);
-		setTags([...new Set(allTags)]);
-
-		const counts = allTags.reduce(
-			(acc: Record<string, number>, tag: string) => {
-				acc[tag] = (acc[tag] || 0) + 1;
-				return acc;
-			},
-			{}
-		);
-		setTagCounts(counts);
-	}, [postList]);
 
 	return (
 		<div className={styles.container}>

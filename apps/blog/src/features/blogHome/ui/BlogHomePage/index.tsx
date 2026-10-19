@@ -8,12 +8,12 @@ import Tag from '../Tag';
 import styles from './BlogHomePage.module.scss';
 import { useHome } from '@/features/blogHome/hooks';
 import { ga } from '@/shared/lib/logs/analytics';
-import { PostType } from '@/shared/types/slug';
+import { PostSummary } from '@/shared/types/slug';
 
 const BREAKPOINT = 1024;
 
 interface BlogHomePageProps {
-	postList: PostType[];
+	postList: PostSummary[];
 	className?: string;
 }
 

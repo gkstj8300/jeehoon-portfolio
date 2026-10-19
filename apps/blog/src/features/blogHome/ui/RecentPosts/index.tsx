@@ -3,16 +3,16 @@ import Link from 'next/link';
 import { useCallback } from 'react';
 import styles from './RecentPosts.module.scss';
 import { ga } from '@/shared/lib/logs/analytics';
-import { PostType } from '@/shared/types/slug';
+import { PostSummary } from '@/shared/types/slug';
 
 type RecentPostsProps = {
-	posts: PostType[];
+	posts: PostSummary[];
 };
 
 const LAYOUT = 'Home';
 
 export default function RecentPosts({ posts }: RecentPostsProps) {
-	const handlePostClick = useCallback((post: PostType) => {
+	const handlePostClick = useCallback((post: PostSummary) => {
 		ga.events.selectPost(post, LAYOUT);
 	}, []);
 

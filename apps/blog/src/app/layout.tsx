@@ -2,7 +2,6 @@ import "@jeehoon/theme";
 import { Layout, Infra, pretendard } from '@jeehoon/ui';
 import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
-import Providers from './providers';
 import StandardLayout from '@/shared/ui/layouts/StandardLayout';
 import '@/styles/globals.scss';
 
@@ -32,9 +31,7 @@ export default function RootLayout({
 		<html lang="ko" data-theme={theme} suppressHydrationWarning>
 			<body className={pretendard.variable}>
 				<Layout.Blob />
-				<Providers>
-					<StandardLayout>{children}</StandardLayout>
-				</Providers>
+				<StandardLayout>{children}</StandardLayout>
 				{gaId ? <Infra.GoogleAnalytics gaId={gaId} /> : null}
 			</body>
 		</html>

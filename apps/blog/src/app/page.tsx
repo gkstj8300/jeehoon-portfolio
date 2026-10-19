@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import getMarkdownAllPosts from '@/entities/post/api/getMarkdownAllPosts';
+import getMarkdownAllPosts, { toPostSummary } from '@/entities/post/api/getMarkdownAllPosts';
 import BlogHomePage from '@/features/blogHome/ui/BlogHomePage';
 
 export const metadata: Metadata = {
@@ -39,5 +39,6 @@ export const metadata: Metadata = {
 export default async function BlogHome() {
 	const { postList } = await getMarkdownAllPosts();
 
-	return <BlogHomePage postList={postList} />;
+	// 홈은 카드·태그만 그리므로 본문을 빼고 넘긴다
+	return <BlogHomePage postList={postList.map(toPostSummary)} />;
 }

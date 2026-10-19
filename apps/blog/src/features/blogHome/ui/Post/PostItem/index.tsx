@@ -2,14 +2,15 @@ import { url } from '@jeehoon/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './PostItem.module.scss';
-import { PostType } from '@/shared/types/slug';
+import { PostSummary } from '@/shared/types/slug';
 
 interface PostItemProps {
-	post: PostType;
-	handlePostClick: (post: PostType) => void;
+	post: PostSummary;
+	priority: boolean;
+	handlePostClick: (post: PostSummary) => void;
 }
 
-export default function PostItem({ post, handlePostClick }: PostItemProps) {
+export default function PostItem({ post, priority, handlePostClick }: PostItemProps) {
 	const { slug, title, description, thumbnailImage, mainTag } = post;
 	return (
 		<Link
@@ -25,7 +26,7 @@ export default function PostItem({ post, handlePostClick }: PostItemProps) {
 						fill
 						sizes="(max-width: 768px) 100vw, 350px"
 						className={styles.img}
-						priority
+						priority={priority}
 					/>
 				</div>
 				<div className={styles.mainTag}>{mainTag}</div>
