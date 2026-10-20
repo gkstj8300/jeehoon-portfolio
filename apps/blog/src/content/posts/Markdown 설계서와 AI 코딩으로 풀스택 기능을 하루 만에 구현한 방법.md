@@ -2,7 +2,7 @@
 title: 'Markdown 설계서와 AI 코딩으로 풀스택 기능을 하루 만에 구현한 방법'
 regDate: '2026-02-22 20:00'
 description: 'AI에게 "만들어줘"라고 말하는 대신 Markdown 설계서를 건네면 결과가 달라져요. 설계서 기반 AI 개발 워크플로우를 실무 경험과 함께 정리합니다.'
-thumbnailImage: 'https://d2ut7x8yqv441q.cloudfront.net/posts/ai_design_doc.webp'
+thumbnailImage: '/images/posts/markdown-design-doc/thumbnail.webp'
 mainTag: 'AI'
 tags: ['AI', '설계', '개발방법론']
 ---

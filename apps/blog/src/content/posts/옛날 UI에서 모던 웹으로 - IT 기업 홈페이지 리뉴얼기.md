@@ -2,7 +2,7 @@
 title: '회사의 얼굴을 만드는 일 - IT 기업 홈페이지 리뉴얼기'
 regDate: '2025-05-01 22:43'
 description: '개발 경력이 많지 않은 상황에서 이사님의 신뢰로 맡게 된 사내 홈페이지 리뉴얼 프로젝트. 기획, 디자인, 개발, 배포까지 모든 과정을 주도하며 얻은 기술적 성장과 개발자로서의 자신감을 키운 특별한 경험담'
-thumbnailImage: 'https://d2ut7x8yqv441q.cloudfront.net/posts/homepage.webp'
+thumbnailImage: '/images/posts/homepage-renewal/thumbnail.webp'
 mainTag: '회고'
 tags: ['프로젝트', '회고']
 ---

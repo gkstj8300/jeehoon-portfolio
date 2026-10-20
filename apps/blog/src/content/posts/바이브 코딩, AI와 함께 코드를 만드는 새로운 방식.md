@@ -2,7 +2,7 @@
 title: '바이브 코딩, AI와 함께 코드를 만드는 새로운 방식'
 regDate: '2026-01-24 14:00'
 description: '바이브 코딩이란 무엇이며, 개발자에게 어떤 의미를 가지는지. AI 코딩 도구가 바꾸고 있는 개발 방식과 그 속에서 개발자가 놓치지 말아야 할 것들에 대해 이야기합니다.'
-thumbnailImage: 'https://d2ut7x8yqv441q.cloudfront.net/posts/vibe_coding.webp'
+thumbnailImage: '/images/posts/vibe-coding/thumbnail.webp'
 mainTag: 'AI'
 tags: ['AI', '바이브코딩', '개발문화']
 ---
