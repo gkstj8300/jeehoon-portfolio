@@ -1,3 +1,5 @@
+// dist/esm 경로의 타입은 @types/react-syntax-highlighter의 전역 선언에만 있어, @types를 자동으로 읽지 않는 TypeScript 6에서도 찾도록 명시한다
+/// <reference types="react-syntax-highlighter" />
 import { ClassAttributes, HTMLAttributes } from 'react';
 import { ExtraProps } from 'react-markdown';
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/prism';
