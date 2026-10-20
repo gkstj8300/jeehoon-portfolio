@@ -2,7 +2,7 @@
 title: '최신 AI 프롬프트 기법 5가지와 실전 프로젝트 적용법'
 regDate: '2026-03-19 10:00'
 description: 'GPT-5, 제미나이 2.5 시대에 AI의 잠재력을 끌어내는 5가지 프롬프트 기법(생각의 트리, 자기 성찰, 메타 프롬프트, RAG, ReAct)을 소개하고, 이를 실제 프로젝트의 설계부터 구현까지 어떻게 적용하는지 실전 프로세스와 함께 정리합니다.'
-thumbnailImage: 'https://d2ut7x8yqv441q.cloudfront.net/posts/ai-prompt.webp'
+thumbnailImage: '/images/posts/ai-prompt-techniques/thumbnail.webp'
 mainTag: 'AI'
 tags: ['AI', 'Prompt Engineering', 'Claude', 'Gemini']
 ---

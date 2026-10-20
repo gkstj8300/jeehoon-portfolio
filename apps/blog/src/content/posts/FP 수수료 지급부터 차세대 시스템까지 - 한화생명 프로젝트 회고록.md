@@ -2,7 +2,7 @@
 title: 'FP 수수료 지급부터 차세대 시스템까지 - 한화생명 프로젝트 회고록'
 regDate: '2025-04-24 20:22'
 description: '매월 수천 명의 보험설계사 수수료를 처리하는 시스템 개발 과정과 런칭과정을 알아볼까요'
-thumbnailImage: 'https://d2ut7x8yqv441q.cloudfront.net/posts/hanwhaproject.webp'
+thumbnailImage: '/images/posts/hanwha-project-retrospective/thumbnail.webp'
 mainTag: '회고'
 tags: ['프로젝트', '회고']
 ---

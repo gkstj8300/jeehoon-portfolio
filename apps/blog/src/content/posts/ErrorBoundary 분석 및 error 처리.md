@@ -2,7 +2,7 @@
 title: 'ErrorBoundary 분석 및 error 처리'
 regDate: '2025-07-28 03:20'
 description: 'React의 ErrorBoundary를 활용해 컴포넌트 단위로 오류를 감지하고 에러 상황에 유연하게 대응할 수 있는 에러 처리 패턴을 소개합니다.'
-thumbnailImage: 'https://d2ut7x8yqv441q.cloudfront.net/posts/ErrorBoundary.webp'
+thumbnailImage: '/images/posts/error-boundary/thumbnail.webp'
 mainTag: 'React'
 tags: ['ErrorBoundary']
 ---

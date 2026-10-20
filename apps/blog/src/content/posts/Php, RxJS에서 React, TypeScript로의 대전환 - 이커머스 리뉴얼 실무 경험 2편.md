@@ -2,7 +2,7 @@
 title: 'Php, RxJS에서 React, TypeScript로의 대전환 - 이커머스 리뉴얼 실무 경험 2편'
 regDate: '2025-06-02 03:19'
 description: '낯선 기술 스택 습득부터 모던 프론트엔드 리뉴얼까지. PHP/RxJS/Twig 환경에서 React/TypeScript로의 대전환 프로젝트를 통한 개발자 성장 스토리!'
-thumbnailImage: 'https://d2ut7x8yqv441q.cloudfront.net/posts/part2.webp'
+thumbnailImage: '/images/posts/ecommerce-renewal-2/thumbnail.webp'
 mainTag: '회고'
 tags: ['프로젝트', '회고']
 ---
